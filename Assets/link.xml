@@ -1,0 +1,17 @@
+<linker>
+    <assembly fullname="Newtonsoft.Json">
+        <type fullname="System.Runtime.CompilerServices.NullableAttribute" preserve="all"/>
+    </assembly>
+    <assembly fullname="System.Core">
+        <type fullname="System.Linq.Expressions.Interpreter.LightLambda" preserve="all" />
+    </assembly>
+    <assembly fullname="System">
+        <type fullname="System.ComponentModel*" preserve="all"/>
+    </assembly>
+    <assembly fullname="Assembly-CSharp">
+        <type fullname="ClassicUO.Configuration.Profile" preserve="all"/>
+    </assembly>
+    <assembly fullname="Assembly-CSharp">
+        <type fullname="ClassicUO.Configuration.Settings" preserve="all"/>
+    </assembly>
+</linker>

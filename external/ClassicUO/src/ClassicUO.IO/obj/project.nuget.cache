@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "wKVQhV0ENnE=",
+  "success": true,
+  "projectFilePath": "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.IO\\ClassicUO.IO.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\sixlabors.imagesharp\\3.1.5\\sixlabors.imagesharp.3.1.5.nupkg.sha512"
+  ],
+  "logs": []
+}

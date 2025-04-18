@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>NFH.FileEmbed</id>
+    <version>1.0.0</version>
+    <authors>NatalieFHowes</authors>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/SirCxyrtyx/FileEmbed</projectUrl>
+    <description>A source generator for embedding resource files directly into your assembly. Access them as a `ReadOnlySpan&lt;byte&gt;`, with no allocations or reflection needed.</description>
+    <tags>Embed</tags>
+    <repository type="git" url="https://github.com/SirCxyrtyx/FileEmbed" commit="941fe67e520bb993d209bc46680b7ba4cb075471" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Microsoft.CodeAnalysis.CSharp" version="4.2.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="X:\_PROJECTS\UO\ClassicUO\external\FileEmbed\FileEmbed\bin\Release\netstandard2.0\FileEmbed.dll" target="analyzers\dotnet\cs\FileEmbed.dll" />
+    <file src="X:\_PROJECTS\UO\ClassicUO\external\FileEmbed\README.md" target="\README.md" />
+  </files>
+</package>

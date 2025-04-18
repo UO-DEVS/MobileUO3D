@@ -1,0 +1,481 @@
+{
+  "format": 1,
+  "restore": {
+    "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.Renderer\\ClassicUO.Renderer.csproj": {}
+  },
+  "projects": {
+    "X:\\_PROJECTS\\UO\\ClassicUO\\external\\FNA\\FNA.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "X:\\_PROJECTS\\UO\\ClassicUO\\external\\FNA\\FNA.Core.csproj",
+        "projectName": "FNA",
+        "projectPath": "X:\\_PROJECTS\\UO\\ClassicUO\\external\\FNA\\FNA.Core.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "X:\\_PROJECTS\\UO\\ClassicUO\\external\\FNA\\obj_core\\",
+        "projectStyle": "PackageReference",
+        "crossTargeting": true,
+        "configFilePaths": [
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200\\RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
+        }
+      }
+    },
+    "X:\\_PROJECTS\\UO\\ClassicUO\\external\\MP3Sharp\\MP3Sharp\\MP3Sharp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "X:\\_PROJECTS\\UO\\ClassicUO\\external\\MP3Sharp\\MP3Sharp\\MP3Sharp.csproj",
+        "projectName": "MP3Sharp",
+        "projectPath": "X:\\_PROJECTS\\UO\\ClassicUO\\external\\MP3Sharp\\MP3Sharp\\MP3Sharp.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "X:\\_PROJECTS\\UO\\ClassicUO\\external\\MP3Sharp\\MP3Sharp\\obj\\",
+        "projectStyle": "PackageReference",
+        "crossTargeting": true,
+        "configFilePaths": [
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net40",
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net40": {
+            "targetAlias": "net40",
+            "projectReferences": {}
+          },
+          "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net40": {
+          "targetAlias": "net40",
+          "dependencies": {
+            "Microsoft.NETFramework.ReferenceAssemblies": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.*, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200\\RuntimeIdentifierGraph.json"
+        },
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "dependencies": {
+            "Microsoft.NETFramework.ReferenceAssemblies": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.*, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200\\RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
+        }
+      }
+    },
+    "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.Assets\\ClassicUO.Assets.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.Assets\\ClassicUO.Assets.csproj",
+        "projectName": "ClassicUO.Assets",
+        "projectPath": "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.Assets\\ClassicUO.Assets.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.Assets\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.IO\\ClassicUO.IO.csproj": {
+                "projectPath": "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.IO\\ClassicUO.IO.csproj"
+              },
+              "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.Utility\\ClassicUO.Utility.csproj": {
+                "projectPath": "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.Utility\\ClassicUO.Utility.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
+        }
+      }
+    },
+    "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.IO\\ClassicUO.IO.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.IO\\ClassicUO.IO.csproj",
+        "projectName": "ClassicUO.IO",
+        "projectPath": "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.IO\\ClassicUO.IO.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.IO\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "X:\\_PROJECTS\\UO\\ClassicUO\\external\\FNA\\FNA.Core.csproj": {
+                "projectPath": "X:\\_PROJECTS\\UO\\ClassicUO\\external\\FNA\\FNA.Core.csproj"
+              },
+              "X:\\_PROJECTS\\UO\\ClassicUO\\external\\MP3Sharp\\MP3Sharp\\MP3Sharp.csproj": {
+                "projectPath": "X:\\_PROJECTS\\UO\\ClassicUO\\external\\MP3Sharp\\MP3Sharp\\MP3Sharp.csproj"
+              },
+              "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.Utility\\ClassicUO.Utility.csproj": {
+                "projectPath": "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.Utility\\ClassicUO.Utility.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
+        }
+      }
+    },
+    "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.Renderer\\ClassicUO.Renderer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.Renderer\\ClassicUO.Renderer.csproj",
+        "projectName": "ClassicUO.Renderer",
+        "projectPath": "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.Renderer\\ClassicUO.Renderer.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.Renderer\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "X:\\_PROJECTS\\UO\\ClassicUO\\external\\FNA\\FNA.Core.csproj": {
+                "projectPath": "X:\\_PROJECTS\\UO\\ClassicUO\\external\\FNA\\FNA.Core.csproj"
+              },
+              "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.Assets\\ClassicUO.Assets.csproj": {
+                "projectPath": "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.Assets\\ClassicUO.Assets.csproj"
+              },
+              "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.Utility\\ClassicUO.Utility.csproj": {
+                "projectPath": "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.Utility\\ClassicUO.Utility.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
+        }
+      }
+    },
+    "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.Utility\\ClassicUO.Utility.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.Utility\\ClassicUO.Utility.csproj",
+        "projectName": "ClassicUO.Utility",
+        "projectPath": "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.Utility\\ClassicUO.Utility.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.Utility\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "X:\\_PROJECTS\\UO\\ClassicUO\\external\\FNA\\FNA.Core.csproj": {
+                "projectPath": "X:\\_PROJECTS\\UO\\ClassicUO\\external\\FNA\\FNA.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "SixLabors.ImageSharp": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+is_global = true
+build_property.RootNamespace = MP3Sharp
+build_property.ProjectDir = X:\_PROJECTS\UO\ClassicUO\external\MP3Sharp\MP3Sharp\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.CsWinRTUseWindowsUIXamlProjections = false
+build_property.EffectiveAnalysisLevelStyle = 
+build_property.EnableCodeStyleSeverity = 

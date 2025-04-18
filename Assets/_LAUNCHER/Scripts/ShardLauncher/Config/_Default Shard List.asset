@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36511925b6ba5e9468f9ed1f07283bc6, type: 3}
+  m_Name: _Default Shard List
+  m_EditorClassIdentifier: 
+  _shards:
+  - {fileID: 11400000, guid: 7c63b03e9b82eb241a4e448688704d29, type: 2}
+  - {fileID: 11400000, guid: e080cf70f8d33064cb5046fc4a26cb26, type: 2}
+  - {fileID: 11400000, guid: ebc2fd0da614c124eb97314907720459, type: 2}
+  - {fileID: 11400000, guid: aa9701eb7ec3f374ab3eed35591ba107, type: 2}
+  - {fileID: 11400000, guid: 61fe1a075850d4a4b80765f037e163b8, type: 2}

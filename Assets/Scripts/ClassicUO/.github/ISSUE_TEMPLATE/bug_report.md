@@ -1,0 +1,5 @@
+- ClassicUO version [you can get it from the login screen]:
+- OS type:
+- Using "DEV" version?: 
+- Shard: 
+- Screenshots/logs: 

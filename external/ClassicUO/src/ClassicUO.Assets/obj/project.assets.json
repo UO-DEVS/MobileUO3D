@@ -1,0 +1,259 @@
+{
+  "version": 3,
+  "targets": {
+    "net9.0": {
+      "SixLabors.ImageSharp/3.1.5": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/SixLabors.ImageSharp.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/SixLabors.ImageSharp.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/_._": {}
+        }
+      },
+      "ClassicUO.IO/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "ClassicUO.Utility": "1.0.0",
+          "FNA": "1.0.0",
+          "MP3Sharp": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ClassicUO.IO.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ClassicUO.IO.dll": {}
+        }
+      },
+      "ClassicUO.Utility/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "FNA": "1.0.0",
+          "SixLabors.ImageSharp": "3.1.5"
+        },
+        "compile": {
+          "bin/placeholder/ClassicUO.Utility.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ClassicUO.Utility.dll": {}
+        }
+      },
+      "FNA/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/FNA.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FNA.dll": {}
+        }
+      },
+      "MP3Sharp/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/MP3Sharp.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MP3Sharp.dll": {}
+        }
+      }
+    },
+    "net9.0/win-x64": {
+      "SixLabors.ImageSharp/3.1.5": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/SixLabors.ImageSharp.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/SixLabors.ImageSharp.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/_._": {}
+        }
+      },
+      "ClassicUO.IO/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "ClassicUO.Utility": "1.0.0",
+          "FNA": "1.0.0",
+          "MP3Sharp": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ClassicUO.IO.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ClassicUO.IO.dll": {}
+        }
+      },
+      "ClassicUO.Utility/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "FNA": "1.0.0",
+          "SixLabors.ImageSharp": "3.1.5"
+        },
+        "compile": {
+          "bin/placeholder/ClassicUO.Utility.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ClassicUO.Utility.dll": {}
+        }
+      },
+      "FNA/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/FNA.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FNA.dll": {}
+        }
+      },
+      "MP3Sharp/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/MP3Sharp.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MP3Sharp.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SixLabors.ImageSharp/3.1.5": {
+      "sha512": "lNtlq7dSI/QEbYey+A0xn48z5w4XHSffF8222cC4F4YwTXfEImuiBavQcWjr49LThT/pRmtWJRcqA/PlL+eJ6g==",
+      "type": "package",
+      "path": "sixlabors.imagesharp/3.1.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "build/SixLabors.ImageSharp.props",
+        "lib/net6.0/SixLabors.ImageSharp.dll",
+        "lib/net6.0/SixLabors.ImageSharp.xml",
+        "sixlabors.imagesharp.128.png",
+        "sixlabors.imagesharp.3.1.5.nupkg.sha512",
+        "sixlabors.imagesharp.nuspec"
+      ]
+    },
+    "ClassicUO.IO/1.0.0": {
+      "type": "project",
+      "path": "../ClassicUO.IO/ClassicUO.IO.csproj",
+      "msbuildProject": "../ClassicUO.IO/ClassicUO.IO.csproj"
+    },
+    "ClassicUO.Utility/1.0.0": {
+      "type": "project",
+      "path": "../ClassicUO.Utility/ClassicUO.Utility.csproj",
+      "msbuildProject": "../ClassicUO.Utility/ClassicUO.Utility.csproj"
+    },
+    "FNA/1.0.0": {
+      "type": "project",
+      "path": "../../external/FNA/FNA.Core.csproj",
+      "msbuildProject": "../../external/FNA/FNA.Core.csproj"
+    },
+    "MP3Sharp/1.0.0": {
+      "type": "project",
+      "path": "../../external/MP3Sharp/MP3Sharp/MP3Sharp.csproj",
+      "msbuildProject": "../../external/MP3Sharp/MP3Sharp/MP3Sharp.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net9.0": [
+      "ClassicUO.IO >= 1.0.0",
+      "ClassicUO.Utility >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.Assets\\ClassicUO.Assets.csproj",
+      "projectName": "ClassicUO.Assets",
+      "projectPath": "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.Assets\\ClassicUO.Assets.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.Assets\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net9.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "projectReferences": {
+            "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.IO\\ClassicUO.IO.csproj": {
+              "projectPath": "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.IO\\ClassicUO.IO.csproj"
+            },
+            "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.Utility\\ClassicUO.Utility.csproj": {
+              "projectPath": "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.Utility\\ClassicUO.Utility.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "9.0.200"
+    },
+    "frameworks": {
+      "net9.0": {
+        "targetAlias": "net9.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+      }
+    },
+    "runtimes": {
+      "win-x64": {
+        "#import": []
+      }
+    }
+  }
+}

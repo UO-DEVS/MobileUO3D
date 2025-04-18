@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648bc235229731147b332ea2ef8fe22d, type: 3}
+  m_Name: UO Unchained
+  m_EditorClassIdentifier: 
+  _shardName: UO Unchained
+  _shardURL: 74.91.116.240
+  _shardPort: 2593
+  _fileDownloadURL: patchuo.b-cdn.net/MobileUO.zip
+  _fileDownloadPort: 80
+  _targetClientVersion: 7.0.10.3
+  _unityEditorClientPath: 
+  _encryption: 0
+  _clientFilesDownloaded: 0
+  _preferExternalStorage: 0
+  _isSupportedServer: 1
+  _shardBanner: {fileID: 21300000, guid: 14c1a893d1fcb624f9776cf6588fa6de, type: 3}

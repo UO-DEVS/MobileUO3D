@@ -1,0 +1,11 @@
+X:\_PROJECTS\UO\ClassicUO\external\MP3Sharp\MP3Sharp\bin\Release\netstandard2.0\MP3Sharp.deps.json
+X:\_PROJECTS\UO\ClassicUO\external\MP3Sharp\MP3Sharp\bin\Release\netstandard2.0\MP3Sharp.dll
+X:\_PROJECTS\UO\ClassicUO\external\MP3Sharp\MP3Sharp\bin\Release\netstandard2.0\MP3Sharp.pdb
+X:\_PROJECTS\UO\ClassicUO\external\MP3Sharp\MP3Sharp\obj\Release\netstandard2.0\MP3Sharp.csproj.AssemblyReference.cache
+X:\_PROJECTS\UO\ClassicUO\external\MP3Sharp\MP3Sharp\obj\Release\netstandard2.0\MP3Sharp.GeneratedMSBuildEditorConfig.editorconfig
+X:\_PROJECTS\UO\ClassicUO\external\MP3Sharp\MP3Sharp\obj\Release\netstandard2.0\MP3Sharp.AssemblyInfoInputs.cache
+X:\_PROJECTS\UO\ClassicUO\external\MP3Sharp\MP3Sharp\obj\Release\netstandard2.0\MP3Sharp.AssemblyInfo.cs
+X:\_PROJECTS\UO\ClassicUO\external\MP3Sharp\MP3Sharp\obj\Release\netstandard2.0\MP3Sharp.csproj.CoreCompileInputs.cache
+X:\_PROJECTS\UO\ClassicUO\external\MP3Sharp\MP3Sharp\obj\Release\netstandard2.0\MP3Sharp.sourcelink.json
+X:\_PROJECTS\UO\ClassicUO\external\MP3Sharp\MP3Sharp\obj\Release\netstandard2.0\MP3Sharp.dll
+X:\_PROJECTS\UO\ClassicUO\external\MP3Sharp\MP3Sharp\obj\Release\netstandard2.0\MP3Sharp.pdb

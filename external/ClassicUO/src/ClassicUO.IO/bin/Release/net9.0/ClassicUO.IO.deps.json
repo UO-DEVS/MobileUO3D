@@ -1,0 +1,99 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "ClassicUO.IO/1.0.0": {
+        "dependencies": {
+          "ClassicUO.Utility": "1.0.0",
+          "FNA": "1.0.0",
+          "MP3Sharp": "1.0.0",
+          "FNA.Reference": "24.2.0.0"
+        },
+        "runtime": {
+          "ClassicUO.IO.dll": {}
+        }
+      },
+      "SixLabors.ImageSharp/3.1.5": {
+        "runtime": {
+          "lib/net6.0/SixLabors.ImageSharp.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.1.5.0"
+          }
+        }
+      },
+      "ClassicUO.Utility/1.0.0": {
+        "dependencies": {
+          "FNA": "1.0.0",
+          "SixLabors.ImageSharp": "3.1.5"
+        },
+        "runtime": {
+          "ClassicUO.Utility.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.0"
+          }
+        }
+      },
+      "FNA/1.0.0": {
+        "runtime": {
+          "FNA.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "MP3Sharp/1.0.0": {
+        "runtime": {
+          "MP3Sharp.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "FNA.Reference/24.2.0.0": {
+        "runtime": {
+          "FNA.dll": {
+            "assemblyVersion": "24.2.0.0",
+            "fileVersion": "24.2.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ClassicUO.IO/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SixLabors.ImageSharp/3.1.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lNtlq7dSI/QEbYey+A0xn48z5w4XHSffF8222cC4F4YwTXfEImuiBavQcWjr49LThT/pRmtWJRcqA/PlL+eJ6g==",
+      "path": "sixlabors.imagesharp/3.1.5",
+      "hashPath": "sixlabors.imagesharp.3.1.5.nupkg.sha512"
+    },
+    "ClassicUO.Utility/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FNA/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MP3Sharp/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FNA.Reference/24.2.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,8 @@
+X:\_PROJECTS\UO\ClassicUO\bin\dist\cuo.dll
+X:\_PROJECTS\UO\ClassicUO\bin\dist\ClassicUO.Assets.pdb
+X:\_PROJECTS\UO\ClassicUO\bin\dist\ClassicUO.Renderer.pdb
+X:\_PROJECTS\UO\ClassicUO\bin\dist\ClassicUO.Utility.pdb
+X:\_PROJECTS\UO\ClassicUO\bin\dist\ClassicUO.IO.pdb
+X:\_PROJECTS\UO\ClassicUO\bin\dist\FNA.pdb
+X:\_PROJECTS\UO\ClassicUO\bin\dist\FNA.dll.config
+X:\_PROJECTS\UO\ClassicUO\bin\dist\MP3Sharp.pdb

@@ -1,0 +1,8 @@
+X:\_PROJECTS\UO\ClassicUO\bin\dist\ClassicUO.exe
+X:\_PROJECTS\UO\ClassicUO\bin\dist\ClassicUO.exe.config
+X:\_PROJECTS\UO\ClassicUO\bin\dist\ClassicUO.pdb
+X:\_PROJECTS\UO\ClassicUO\bin\dist\System.Buffers.dll
+X:\_PROJECTS\UO\ClassicUO\bin\dist\System.Memory.dll
+X:\_PROJECTS\UO\ClassicUO\bin\dist\System.Numerics.Vectors.dll
+X:\_PROJECTS\UO\ClassicUO\bin\dist\System.Runtime.CompilerServices.Unsafe.dll
+X:\_PROJECTS\UO\ClassicUO\bin\dist\cuoapi.dll

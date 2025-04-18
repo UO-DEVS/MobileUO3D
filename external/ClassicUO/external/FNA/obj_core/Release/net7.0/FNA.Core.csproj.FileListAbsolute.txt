@@ -1,0 +1,11 @@
+X:\_PROJECTS\UO\ClassicUO\external\FNA\bin\Release\net7.0\FNA.dll.config
+X:\_PROJECTS\UO\ClassicUO\external\FNA\bin\Release\net7.0\FNA.deps.json
+X:\_PROJECTS\UO\ClassicUO\external\FNA\bin\Release\net7.0\FNA.dll
+X:\_PROJECTS\UO\ClassicUO\external\FNA\bin\Release\net7.0\FNA.pdb
+X:\_PROJECTS\UO\ClassicUO\external\FNA\obj_core\Release\net7.0\FNA.Core.GeneratedMSBuildEditorConfig.editorconfig
+X:\_PROJECTS\UO\ClassicUO\external\FNA\obj_core\Release\net7.0\FNA.Core.csproj.CoreCompileInputs.cache
+X:\_PROJECTS\UO\ClassicUO\external\FNA\obj_core\Release\net7.0\FNA.Core.sourcelink.json
+X:\_PROJECTS\UO\ClassicUO\external\FNA\obj_core\Release\net7.0\FNA.dll
+X:\_PROJECTS\UO\ClassicUO\external\FNA\obj_core\Release\net7.0\refint\FNA.dll
+X:\_PROJECTS\UO\ClassicUO\external\FNA\obj_core\Release\net7.0\FNA.pdb
+X:\_PROJECTS\UO\ClassicUO\external\FNA\obj_core\Release\net7.0\ref\FNA.dll

@@ -1,0 +1,72 @@
+{
+  "format": 1,
+  "restore": {
+    "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.Bootstrap\\src\\ClassicUO.Bootstrap.csproj": {}
+  },
+  "projects": {
+    "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.Bootstrap\\src\\ClassicUO.Bootstrap.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.Bootstrap\\src\\ClassicUO.Bootstrap.csproj",
+        "projectName": "ClassicUO",
+        "projectPath": "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.Bootstrap\\src\\ClassicUO.Bootstrap.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.Bootstrap\\src\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "targetAlias": "net472",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net472": {
+          "targetAlias": "net472",
+          "dependencies": {
+            "System.Buffers": {
+              "target": "Package",
+              "version": "[4.5.1, )"
+            },
+            "System.Memory": {
+              "target": "Package",
+              "version": "[4.5.5, )"
+            },
+            "System.Runtime.CompilerServices.Unsafe": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200\\RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

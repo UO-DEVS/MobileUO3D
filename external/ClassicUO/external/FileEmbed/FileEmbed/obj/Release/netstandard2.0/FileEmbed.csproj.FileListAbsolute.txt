@@ -1,0 +1,11 @@
+X:\_PROJECTS\UO\ClassicUO\external\FileEmbed\FileEmbed\bin\Release\netstandard2.0\FileEmbed.deps.json
+X:\_PROJECTS\UO\ClassicUO\external\FileEmbed\FileEmbed\bin\Release\netstandard2.0\FileEmbed.dll
+X:\_PROJECTS\UO\ClassicUO\external\FileEmbed\FileEmbed\bin\Release\netstandard2.0\FileEmbed.pdb
+X:\_PROJECTS\UO\ClassicUO\external\FileEmbed\FileEmbed\obj\Release\netstandard2.0\FileEmbed.csproj.AssemblyReference.cache
+X:\_PROJECTS\UO\ClassicUO\external\FileEmbed\FileEmbed\obj\Release\netstandard2.0\FileEmbed.GeneratedMSBuildEditorConfig.editorconfig
+X:\_PROJECTS\UO\ClassicUO\external\FileEmbed\FileEmbed\obj\Release\netstandard2.0\FileEmbed.AssemblyInfoInputs.cache
+X:\_PROJECTS\UO\ClassicUO\external\FileEmbed\FileEmbed\obj\Release\netstandard2.0\FileEmbed.AssemblyInfo.cs
+X:\_PROJECTS\UO\ClassicUO\external\FileEmbed\FileEmbed\obj\Release\netstandard2.0\FileEmbed.csproj.CoreCompileInputs.cache
+X:\_PROJECTS\UO\ClassicUO\external\FileEmbed\FileEmbed\obj\Release\netstandard2.0\FileEmbed.sourcelink.json
+X:\_PROJECTS\UO\ClassicUO\external\FileEmbed\FileEmbed\obj\Release\netstandard2.0\FileEmbed.dll
+X:\_PROJECTS\UO\ClassicUO\external\FileEmbed\FileEmbed\obj\Release\netstandard2.0\FileEmbed.pdb

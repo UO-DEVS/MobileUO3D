@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "dgSpecHash": "4ysZVPPYPHw=",
+  "success": true,
+  "projectFilePath": "X:\\_PROJECTS\\UO\\ClassicUO\\src\\ClassicUO.Utility\\ClassicUO.Utility.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\sixlabors.imagesharp\\3.1.5\\sixlabors.imagesharp.3.1.5.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'SixLabors.ImageSharp' 3.1.5 has a known high severity vulnerability, https://github.com/advisories/GHSA-2cmq-823j-5qj8",
+      "libraryId": "SixLabors.ImageSharp",
+      "targetGraphs": [
+        "net9.0",
+        "net9.0/win-x64"
+      ]
+    }
+  ]
+}

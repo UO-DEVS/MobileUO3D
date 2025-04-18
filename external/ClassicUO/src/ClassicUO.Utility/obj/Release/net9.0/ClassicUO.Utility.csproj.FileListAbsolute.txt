@@ -1,0 +1,17 @@
+X:\_PROJECTS\UO\ClassicUO\src\ClassicUO.Utility\bin\Release\net9.0\ClassicUO.Utility.deps.json
+X:\_PROJECTS\UO\ClassicUO\src\ClassicUO.Utility\bin\Release\net9.0\ClassicUO.Utility.dll
+X:\_PROJECTS\UO\ClassicUO\src\ClassicUO.Utility\bin\Release\net9.0\ClassicUO.Utility.pdb
+X:\_PROJECTS\UO\ClassicUO\src\ClassicUO.Utility\bin\Release\net9.0\FNA.dll
+X:\_PROJECTS\UO\ClassicUO\src\ClassicUO.Utility\bin\Release\net9.0\FNA.pdb
+X:\_PROJECTS\UO\ClassicUO\src\ClassicUO.Utility\bin\Release\net9.0\FNA.dll.config
+X:\_PROJECTS\UO\ClassicUO\src\ClassicUO.Utility\obj\Release\net9.0\ClassicUO.Utility.csproj.AssemblyReference.cache
+X:\_PROJECTS\UO\ClassicUO\src\ClassicUO.Utility\obj\Release\net9.0\ClassicUO.Utility.GeneratedMSBuildEditorConfig.editorconfig
+X:\_PROJECTS\UO\ClassicUO\src\ClassicUO.Utility\obj\Release\net9.0\ClassicUO.Utility.AssemblyInfoInputs.cache
+X:\_PROJECTS\UO\ClassicUO\src\ClassicUO.Utility\obj\Release\net9.0\ClassicUO.Utility.AssemblyInfo.cs
+X:\_PROJECTS\UO\ClassicUO\src\ClassicUO.Utility\obj\Release\net9.0\ClassicUO.Utility.csproj.CoreCompileInputs.cache
+X:\_PROJECTS\UO\ClassicUO\src\ClassicUO.Utility\obj\Release\net9.0\ClassicUO.Utility.sourcelink.json
+X:\_PROJECTS\UO\ClassicUO\src\ClassicUO.Utility\obj\Release\net9.0\ClassicU.961915F3.Up2Date
+X:\_PROJECTS\UO\ClassicUO\src\ClassicUO.Utility\obj\Release\net9.0\ClassicUO.Utility.dll
+X:\_PROJECTS\UO\ClassicUO\src\ClassicUO.Utility\obj\Release\net9.0\refint\ClassicUO.Utility.dll
+X:\_PROJECTS\UO\ClassicUO\src\ClassicUO.Utility\obj\Release\net9.0\ClassicUO.Utility.pdb
+X:\_PROJECTS\UO\ClassicUO\src\ClassicUO.Utility\obj\Release\net9.0\ref\ClassicUO.Utility.dll
