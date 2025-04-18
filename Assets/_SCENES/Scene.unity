@@ -897,8 +897,7 @@ PrefabInstance:
       propertyPath: _launcher
       value: 
       objectReference: {fileID: 6138297575820401895}
-    m_RemovedComponents:
-    - {fileID: 2304829606484495069, guid: bccfa33a1c2cb6b4b893dd23daf1a9d8, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -968,44 +967,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8597354575981264499, guid: 85fc389a94a6b5f4e8fc50823cfaeba6,
         type: 3}
-      propertyPath: _onGameClientStart.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8597354575981264499, guid: 85fc389a94a6b5f4e8fc50823cfaeba6,
-        type: 3}
-      propertyPath: _onGameClientStart.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8597354575981264499, guid: 85fc389a94a6b5f4e8fc50823cfaeba6,
-        type: 3}
       propertyPath: _onGameClientStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 224268468}
-    - target: {fileID: 8597354575981264499, guid: 85fc389a94a6b5f4e8fc50823cfaeba6,
-        type: 3}
-      propertyPath: _onGameClientStart.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8597354575981264499, guid: 85fc389a94a6b5f4e8fc50823cfaeba6,
-        type: 3}
-      propertyPath: _onGameClientStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 8597354575981264499, guid: 85fc389a94a6b5f4e8fc50823cfaeba6,
-        type: 3}
-      propertyPath: _onGameClientStart.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 8597354575981264499, guid: 85fc389a94a6b5f4e8fc50823cfaeba6,
-        type: 3}
-      propertyPath: _onGameClientStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8597354575981264499, guid: 85fc389a94a6b5f4e8fc50823cfaeba6,
-        type: 3}
-      propertyPath: _onGameClientStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
