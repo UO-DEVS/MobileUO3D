@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/_DX4D/UO/SplashScreen.unity
     guid: 36c0389e3de4ffb48a770b0af3738df4
   - enabled: 1
-    path: Assets/Scene.unity
+    path: Assets/_SCENES/Scene.unity
     guid: 7013600beecfbff488e6a90aafaecd40
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
