@@ -97,7 +97,7 @@ public static class UserPreferences
     public static void Initialize()
 	{
 		//HUD
-		ShowCloseButtons = new IntPreference(nameof(ShowCloseButtons), (int) PreferenceEnums.ShowCloseButtons.Off);
+		ShowCloseButtons = new IntPreference(nameof(ShowCloseButtons), (int) PreferenceEnums.ShowCloseButtons.On);
 		ContainerItemSelection = new IntPreference(nameof(ContainerItemSelection), (int) PreferenceEnums.ContainerItemSelection.Fine);
 		ScaleSize = new IntPreference(nameof(ScaleSize), (int) ScaleSizes.Default);
         EnlargeSmallButtons = new IntPreference(nameof(EnlargeSmallButtons), (int) PreferenceEnums.EnlargeSmallButtons.Off);

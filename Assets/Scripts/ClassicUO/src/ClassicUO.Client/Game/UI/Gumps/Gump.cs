@@ -53,11 +53,19 @@ namespace ClassicUO.Game.UI.Gumps
 	    {
 	    	//ADDED DX4D
 	    	bool CanCloseMacros = false;
+	    	bool CanCloseActionButtons = false;
 	    	
 	    	if (!CanCloseMacros)
 	    	{
-		    	if (this.GumpType == Gumps.GumpType.AssistantHotkeyButton) return; //ADDED DX4D
-		    	if (this.GumpType == Gumps.GumpType.AssistantMacroButton) return; //ADDED DX4D
+		    	if (this.GumpType is Gumps.GumpType.AssistantHotkeyButton) return; //ADDED DX4D
+		    	if (this.GumpType is Gumps.GumpType.AssistantMacroButton) return; //ADDED DX4D
+		    	if (this.GumpType is Gumps.GumpType.MacroButton) return; //ADDED DX4D
+	    	}
+	    	if (!CanCloseActionButtons)
+	    	{
+		    	if (this.GumpType is Gumps.GumpType.AbilityButton) return; //ADDED DX4D
+		    	if (this.GumpType is Gumps.GumpType.SkillButton) return; //ADDED DX4D
+		    	if (this.GumpType is Gumps.GumpType.SpellButton) return; //ADDED DX4D
 	    	}
 	    	//END ADDED DX4D
 	    	
