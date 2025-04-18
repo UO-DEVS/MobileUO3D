@@ -22,9 +22,9 @@ Follow the instructions on the [Wiki](https://github.com/VoxelBoy/MobileUO/wiki)
 This fork requires Unity to be upgraded to .NET 10, to install .NET 10 follow these steps:
 
 -Import **C# Project Modifier** into your project via Package Manager:
-https://github.com/Cysharp/CsprojModifier.git?path=src/CsprojModifier/Assets/CsprojModifier
+https://github.com/Cysharp/CsprojModifier
 
--Go to "Edit>Project Settings" in Unity and navigate to "Project Settings>Editor>C# Project Modifier". Browse and locate "LangVersion.props" file from the root folder of your project.
+-Go to **"Edit>Project Settings"** in Unity and navigate to **"Editor>C# Project Modifier"**. Browse and locate the **"LangVersion.props"** file from the root folder of your project.
 
 # See it in action
 
