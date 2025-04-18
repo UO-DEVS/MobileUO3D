@@ -18,6 +18,14 @@ alt="chat on Discord"></a>
 # How to Play?
 Follow the instructions on the [Wiki](https://github.com/VoxelBoy/MobileUO/wiki) to install and configure MobileUO for your mobile device.
 
+# How to Compile?
+This fork requires Unity to be upgraded to .NET 10, to install .NET 10 follow these steps:
+
+-Import **C# Project Modifier** into your project via Package Manager:
+https://github.com/Cysharp/CsprojModifier.git?path=src/CsprojModifier/Assets/CsprojModifier
+
+-Go to "Edit>Project Settings" in Unity and navigate to "Project Settings>Editor>C# Project Modifier". Browse and locate "LangVersion.props" file from the root folder of your project.
+
 # See it in action
 
 Click to play the video
