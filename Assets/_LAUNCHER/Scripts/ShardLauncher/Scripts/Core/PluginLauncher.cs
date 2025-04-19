@@ -13,9 +13,9 @@ public class PluginLauncher : MonoBehaviour, ILauncherPlugin
 	[SerializeField] UnityEvent<ShardConfiguration> _onBeforeServerLaunch;
 	[SerializeField] UnityEvent<ShardConfiguration> _onServerLaunch;
 	
-	[SerializeField] UnityEvent _onGameClientStart = new UnityEvent();
-	[SerializeField] UnityEvent _onClientDownloadStart = new UnityEvent();
-	[SerializeField] UnityEvent<ServerConfiguration> _onDownloadsDeleted = new UnityEvent<ServerConfiguration>();
+	[SerializeField] UnityEvent _onGameClientStart;
+	[SerializeField] UnityEvent _onClientDownloadStart;
+	[SerializeField] UnityEvent<ServerConfiguration> _onDownloadsDeleted;
 	
 	//ON LOAD
 	public virtual void OnLoad(ShardConfiguration shard)
