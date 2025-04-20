@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f8477eba16b02b48b4a20b3f6260c21, type: 3}
+  m_Name: MobileUO Splash Screen
+  m_EditorClassIdentifier: 
+  splashSound: {fileID: 8300000, guid: 702564a599574064998638966faafd41, type: 3}
+  volume: 0.5
+  background: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  logo: {fileID: 21300000, guid: 8da4314e36e93b548907be9702882653, type: 3}
+  splashDuration: 6
+  fadeInDuration: 10
+  zoomEffect: 1
+  logoZoomSpeed: 0.05
+  backgroundZoomSpeed: 0.1

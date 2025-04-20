@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
@@ -7,10 +7,9 @@ using NUnit.Framework;
 
 public class SplashScreenController : MonoBehaviour
 {
-    [Header("SCENE TRANSITION")]
-    public bool autoloadNextScene = false;
-    public bool loadSceneAdditive = true;
-
+	[Header("SPLASH SCREEN")]
+	public SplashScreen splashScreen;
+	/*
     [Header("AUDIO")]
     public AudioClip splashSound;   // Assign in Inspector
     public float volume = 0.5f;   // Logo zoom speed
@@ -21,7 +20,11 @@ public class SplashScreenController : MonoBehaviour
     public bool zoomEffect = true;
     public float logoZoomSpeed = 0.5f;   // Logo zoom speed
     public float backgroundZoomSpeed = 0.3f; // Background zoom speed
-
+	//*/
+    [Header("SCENE TRANSITION")]
+    public bool autoloadNextScene = false;
+	public bool loadSceneAdditive = true;
+    
     [Header("TOGGLE ON LAUNCH")]
     public List<Transform> _toggleOn = new List<Transform>();
     public List<Transform> _toggleOff = new List<Transform>();
@@ -35,9 +38,15 @@ public class SplashScreenController : MonoBehaviour
     private Vector3 initialBgScale;
 
     private void Start()
-    {
+	{
+		if (!splashScreen)
+		{
+			if (autoloadNextScene) Invoke(nameof(LoadMainScene), 0f);
+			return;
+		}
+		
         // Play splash sound
-        if (splashSound)
+		if (splashScreen.splashSound)
         {
             if (!audioPlayer)
             {
@@ -49,17 +58,23 @@ public class SplashScreenController : MonoBehaviour
             }
             if (audioPlayer)
             {
-                audioPlayer.clip = splashSound;
+                audioPlayer.clip = splashScreen.splashSound;
                 audioPlayer.playOnAwake = false;
-                audioPlayer.volume *= volume;
+                audioPlayer.volume *= splashScreen.volume;
                 audioPlayer.Play();
             }
         }
         
+		// Fade In
         logoImage.CrossFadeAlpha(0f, 0f, true);
-        logoImage.CrossFadeAlpha(1f, fadeInDuration / 4, false);
+        
+		// Load Images
+		backgroundImage.sprite = splashScreen.background;
+		logoImage.sprite = splashScreen.logo;
+		
+		// Fade Out
+        logoImage.CrossFadeAlpha(1f, splashScreen.fadeInDuration / 4, false);
         //logoImage.CrossFadeAlpha(0f, splashDuration, false);
-
 
         // Store initial scales
         initialLogoScale = logoImage.transform.localScale;
@@ -69,12 +84,12 @@ public class SplashScreenController : MonoBehaviour
         ScaleBackground();
 
         // Start zoom effect if enabled
-        if (zoomEffect)
+        if (splashScreen.zoomEffect)
         {
             StartCoroutine(ZoomElements());
         }
         // Load next scene after the duration
-        if (autoloadNextScene) Invoke(nameof(LoadMainScene), splashDuration);
+        if (autoloadNextScene) Invoke(nameof(LoadMainScene), splashScreen.splashDuration);
     }
 
     private void ScaleBackground()
@@ -95,11 +110,11 @@ public class SplashScreenController : MonoBehaviour
     private IEnumerator ZoomElements()
     {
         float time = 0;
-        while (time < splashDuration)
+        while (time < splashScreen.splashDuration)
         {
             time += Time.deltaTime;
-            float logoScaleIncrease = logoZoomSpeed * Time.deltaTime;
-            float bgScaleIncrease = backgroundZoomSpeed * Time.deltaTime;
+            float logoScaleIncrease = splashScreen.logoZoomSpeed * Time.deltaTime;
+            float bgScaleIncrease = splashScreen.backgroundZoomSpeed * Time.deltaTime;
 
             // Zoom background while maintaining aspect ratio
             backgroundImage.transform.localScale += new Vector3(bgScaleIncrease, bgScaleIncrease, 0);
