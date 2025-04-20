@@ -15,7 +15,7 @@ MonoBehaviour:
   splashSound: {fileID: 8300000, guid: 702564a599574064998638966faafd41, type: 3}
   volume: 0.5
   background: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  logo: {fileID: 21300000, guid: 8da4314e36e93b548907be9702882653, type: 3}
+  logo: {fileID: 21300000, guid: f678cb4af46a4bb4fa238fa69fe80c7a, type: 3}
   splashDuration: 6
   fadeInDuration: 10
   zoomEffect: 1
