@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class DownloadPresenter : MonoBehaviour
 {
+    const string BACK_LABEL = "<";
+    const string CANCEL_LABEL = "X";
+
     [SerializeField]
     private Text counterText;
     
@@ -59,7 +62,7 @@ public class DownloadPresenter : MonoBehaviour
     public void ShowError(string error)
     {
         backOrCancelButton.gameObject.SetActive(true);
-        backOrCancelButtonText.text = "Back";
+	    backOrCancelButtonText.text = BACK_LABEL;
         errorText.text = error;
         errorText.gameObject.SetActive(true);
     }
@@ -98,7 +101,8 @@ public class DownloadPresenter : MonoBehaviour
         });
         filesScrollView.SetActive(true);
         backOrCancelButton.gameObject.SetActive(true);
-        backOrCancelButtonText.text = "Cancel";
+        backOrCancelButtonText.text = CANCEL_LABEL; //ADDED DX4D
+        //backOrCancelButtonText.text = "Cancel"; //REMOVED DX4D
     }
 
     public void ClearFileList()
