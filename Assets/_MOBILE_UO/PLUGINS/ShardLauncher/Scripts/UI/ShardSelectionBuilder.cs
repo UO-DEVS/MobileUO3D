@@ -8,6 +8,7 @@ public class ShardSelectionBuilder : MonoBehaviour
 	
 	[Header("PREFAB TARGETS")]
 	[SerializeField] private ShardEntryUI serverEntryPrefab;
+	[SerializeField] private ShardConfigUI serverConfigPrefab;
 	
 	[Header("COMPONENT LINKS")]
 	//[SerializeField] private ShardLauncher launcher;
@@ -112,14 +113,38 @@ public class ShardSelectionBuilder : MonoBehaviour
 	{
 		//if (!serverEntryPrefab) return false;
 		
+		//SERVER ENTRY
 		ShardEntryUI entry = Instantiate(serverEntryPrefab);
-
-		if (!target) entry.transform.SetParent(this.transform);//, true);
-		else entry.transform.SetParent(target);//, true);
-
-		entry.Assign(Selector, shard);
-		entry.gameObject.name = shard.ShardName;
-		entry.gameObject.SetActive(true);
+		if (entry)
+		{
+			if (!target) entry.transform.SetParent(this.transform);//, true);
+			else entry.transform.SetParent(target);//, true);
+	
+			entry.Assign(Selector, shard);
+			entry.gameObject.name = shard.ShardName;
+			entry.gameObject.SetActive(true);
+			
+			//CONFIG
+			if (serverConfigPrefab)
+			{
+				ShardConfigUI config = Instantiate(serverConfigPrefab);
+				if (config)
+				{
+					config.gameObject.name = entry.Shard.name;
+					config.transform.SetParent(entry.transform);
+					config.gameObject.SetActive(true);
+					//config.Center();
+					
+					config.AssignServer(entry.Shard.name, entry.Shard.ShardIP, entry.Shard.ShardPort);
+					config.AssignPatch(shard.ShardFileDownloadIP, shard.ShardFileDownloadPort);
+					config.AssignClient(shard.ClientVersion);
+					config.Init();
+					config.Hide();
+					//config.Initialize(shard);
+					//config.gameObject.SetActive(false);
+				}
+			} else LogIssue("You must assign a serverConfigPrefab to " + name);
+		}
 	}
 	
 	
@@ -153,5 +178,13 @@ public class ShardSelectionBuilder : MonoBehaviour
 	private void Log(string message)
 	{
 		Debug.Log(message);
+	}
+	private void Log(string header, string message, string color)
+	{
+		Debug.Log("<color=" + color + ">" + header + "</color>: " + message);
+	}
+	private void LogIssue(string message)
+	{
+		Log("ISSUE", message, "red");
 	}
 }

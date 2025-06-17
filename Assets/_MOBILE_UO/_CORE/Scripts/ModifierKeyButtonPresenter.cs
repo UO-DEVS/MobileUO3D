@@ -6,8 +6,8 @@ public class ModifierKeyButtonPresenter : MonoBehaviour
     [SerializeField] private Button button;
     [SerializeField] private Image image;
 
-    private readonly Color activeColor = new Color(155 / 255f, 1f, 1f, 1f);
-    private readonly Color inactiveColor = Color.white;
+	private readonly Color activeColor = new Color(0.25f, 0.5f, 0f, 1f);
+	private readonly Color inactiveColor = Color.black;
     
     public bool ToggledOn { get; private set; }
 

@@ -52,6 +52,7 @@ public class ShardLauncher : MonoBehaviour
 		ShardConfiguration oldShard = shard;
 		shard = targetShard;
 		if (update) shard.ClientFilesDownloaded = false;
+		//shard.ClientFilesDownloaded = !update;
 		OnServerChanged(oldShard, shard);
 	}
 	//ON SERVER CHANGED

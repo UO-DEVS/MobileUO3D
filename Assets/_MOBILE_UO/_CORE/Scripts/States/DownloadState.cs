@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Networking;
+using System.IO;
 
 public class DownloadState : IState
 {
@@ -48,10 +49,22 @@ public class DownloadState : IState
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
         serverConfiguration = ServerConfigurationModel.ActiveConfiguration;
-        Debug.Log($"Downloading files to {serverConfiguration.GetPathToSaveFiles()}");
-        var port = int.Parse(serverConfiguration.FileDownloadServerPort);
+	    string configPath = serverConfiguration.GetPathToSaveFiles(); //ADDED DX4D
+        Debug.Log($"Downloading files to {configPath}");
+	    var port = int.Parse(serverConfiguration.FileDownloadServerPort);
         
-	    if (serverConfiguration.AllFilesDownloaded || (Application.isEditor && string.IsNullOrEmpty(serverConfiguration.ClientPathForUnityEditor) == false))
+	    //ADDED DX4D
+	    bool updateRequired = !serverConfiguration.AllFilesDownloaded;
+	    DirectoryInfo configurationDirectory = new DirectoryInfo(configPath);
+	    if (configurationDirectory.Exists)
+	    {
+		    FileInfo[] files = configurationDirectory.GetFiles();
+		    if (files == null || files.Length <= 0) updateRequired = true;
+	    }
+	    else updateRequired = true;
+	    //END ADDED
+        
+	    if (!updateRequired || serverConfiguration.AllFilesDownloaded || (Application.isEditor && string.IsNullOrEmpty(serverConfiguration.ClientPathForUnityEditor) == false))
         {
             StateManager.GoToState<GameState>();
         }
@@ -181,7 +194,8 @@ public class DownloadState : IState
 
     public void StopAndShowError(string error)
     {
-        Debug.LogError(error);
+	    //Debug.LogError(error); //REMOVED DX4D
+	    LogIssue(error); //ADDED DX4D
         //Stop downloads
         downloadPresenter.ShowError(error);
         downloadPresenter.ClearFileList();
@@ -198,4 +212,21 @@ public class DownloadState : IState
         FilesToDownload = null;
         serverConfiguration = null;
     }
+    
+	//LOG
+	[SerializeField] bool _consoleLogging = true;
+	[SerializeField] bool _onscreenLogging = true;
+	void Log(string message, bool warning = false)
+	{
+		if (_consoleLogging) 
+		{
+			if (warning) Debug.LogWarning(message);
+			else Debug.Log(message);
+		}
+		if (_onscreenLogging) downloadPresenter.ShowError(message);
+	}
+	void LogIssue(string message, string title = "ISSUE", string color = "red")
+	{
+		Log("<color=" + color + ">" + title + "</color>: " + message, true);
+	}
 }

@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class ShardEntryUI : MonoBehaviour
 {
+	//[Header("COMPONENT LINKS")]
+	//[SerializeField] ShardConfigUI _configUI;
+	
 	[Header("CONFIG")]
 	//TEXT BUTTON COLOR
 	[SerializeField] Color _textButtonColor = new Color(0.09f, 0.09f, 0.09f);
@@ -12,12 +15,41 @@ public class ShardEntryUI : MonoBehaviour
 	[Header("UI TARGETS")]
 	//TEXT
 	[SerializeField] private TMPro.TMP_Text textLabel;
+	//IMAGE
+	[SerializeField] private UnityEngine.UI.Image serverEntryPrefab;
+	
+	//SHARD CONFIG
+	private ShardConfiguration _shardEntry;
+	public ShardConfiguration Shard => _shardEntry;
+	
+	//SHARD SELECTOR
+	private ShardSelector _shardSelector;
+	public ShardSelector Selector => _shardSelector;
+	
+	//ON VALIDATE
+	//protected void OnValidate()
+	//{
+	//	if (!_configUI) _configUI = GetComponentInChildren<ShardConfigUI>();
+	//}
+	
+	//ON ENABLE
+	//protected void OnEnable()
+	//{
+	//	if (_configUI) _configUI.Initialize(_shardEntry);
+	//}
+	
+	//ADD SERVER ENTRY
+	public void Assign(ShardSelector newShardSelector, ShardConfiguration newShardEntry)
+	{
+		_shardSelector = newShardSelector;
+		_shardEntry = newShardEntry;
+		SetTitle(newShardEntry.ShardName);
+		SetImage(newShardEntry.ShardBanner);
+	}
 	public void SetTitle(string newLabel)
 	{
 		textLabel.text = newLabel;
 	}
-	//IMAGE
-	[SerializeField] private UnityEngine.UI.Image serverEntryPrefab;
 	public bool SetImage(Sprite newImage)
 	{
 		if (newImage == null)
@@ -38,23 +70,6 @@ public class ShardEntryUI : MonoBehaviour
 			serverEntryPrefab.sprite = newImage;
 			return true;
 		}
-	}
-	
-	//SHARD CONFIG
-	private ShardConfiguration _shardEntry;
-	public ShardConfiguration Shard => _shardEntry;
-	
-	//SHARD SELECTOR
-	private ShardSelector _shardSelector;
-	public ShardSelector Selector => _shardSelector;
-	
-	//ADD SERVER ENTRY
-	public void Assign(ShardSelector newShardSelector, ShardConfiguration newShardEntry)
-	{
-		_shardSelector = newShardSelector;
-		_shardEntry = newShardEntry;
-		SetTitle(newShardEntry.ShardName);
-		SetImage(newShardEntry.ShardBanner);
 	}
 	
 	//LAUNCH SHARD
