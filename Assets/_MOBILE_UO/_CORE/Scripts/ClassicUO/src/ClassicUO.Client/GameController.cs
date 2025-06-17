@@ -909,7 +909,25 @@ namespace ClassicUO
         private readonly UnityEngine.KeyCode[] _keyCodeEnumValues = (UnityEngine.KeyCode[]) Enum.GetValues(typeof(UnityEngine.KeyCode));
         private UnityEngine.Vector3 lastMousePosition;
         public SDL_Keymod KeymodOverride;
-        public bool EscOverride;
+	    public bool EscOverride;
+        
+	    //ADDED DX4D
+	    public bool F1Override;
+	    public bool F2Override;
+	    public bool F3Override;
+	    public bool F4Override;
+	    
+	    public bool F5Override;
+	    public bool F6Override;
+	    public bool F7Override;
+	    public bool F8Override;
+	    
+	    public bool F9Override;
+	    public bool F10Override;
+	    public bool F11Override;
+	    public bool F12Override;
+	    //END ADDED
+        
         private int zoomCounter;
 
         private void MouseUpdate()
@@ -1050,32 +1068,9 @@ namespace ClassicUO
                 SimulateMouse(leftMouseDown, leftMouseUp, rightMouseDown, rightMouseUp, mouseMotion, false);
             }
 
-            //Keyboard handling
-            var keymod = KeymodOverride;
-            if (UnityEngine.Input.GetKey(UnityEngine.KeyCode.LeftAlt))
-            {
-                keymod |= SDL_Keymod.KMOD_LALT;
-            }
-            if (UnityEngine.Input.GetKey(UnityEngine.KeyCode.RightAlt))
-            {
-                keymod |= SDL_Keymod.KMOD_RALT;
-            }
-            if (UnityEngine.Input.GetKey(UnityEngine.KeyCode.LeftShift))
-            {
-                keymod |= SDL_Keymod.KMOD_LSHIFT;
-            }
-            if (UnityEngine.Input.GetKey(UnityEngine.KeyCode.RightShift))
-            {
-                keymod |= SDL_Keymod.KMOD_RSHIFT;
-            }
-            if (UnityEngine.Input.GetKey(UnityEngine.KeyCode.LeftControl))
-            {
-                keymod |= SDL_Keymod.KMOD_LCTRL;
-            }
-            if (UnityEngine.Input.GetKey(UnityEngine.KeyCode.RightControl))
-            {
-                keymod |= SDL_Keymod.KMOD_RCTRL;
-            }
+
+	        var keymod = GetModKeys(); //ADDED DX4D
+	        //var keycode = GetKeys(); //ADDED DX4D
             
             Keyboard.Shift = (keymod & SDL_Keymod.KMOD_SHIFT) != SDL_Keymod.KMOD_NONE;
             Keyboard.Alt = (keymod & SDL_Keymod.KMOD_ALT) != SDL_Keymod.KMOD_NONE;
@@ -1131,6 +1126,370 @@ namespace ClassicUO
                     Plugin.ProcessHotkeys(0, 0, false);
                 }
             }
+            
+	        //ADDED DX4D
+	        // F1 > F4
+	        //F1
+	        if (F1Override)
+	        {
+		        F1Override = false;
+		        UnityEngine.KeyCode activationkey = UnityEngine.KeyCode.F1;
+		        
+		        var key = new SDL_KeyboardEvent {keysym = new SDL_Keysym {sym = (SDL_Keycode) activationkey, mod = keymod}};
+		        //KEY DOWN
+		        // if (UnityEngine.Input.GetKeyDown(KeyCode.Escape))
+		        {
+			        Keyboard.OnKeyDown(key);
+
+			        if (Plugin.ProcessHotkeys((int) key.keysym.sym, (int) key.keysym.mod, true))
+			        {
+				        _ignoreNextTextInput = false;
+				        UIManager.KeyboardFocusControl?.InvokeKeyDown(key.keysym.sym, key.keysym.mod);
+				        Scene.OnKeyDown(key);
+			        }
+			        else
+				        _ignoreNextTextInput = true;
+		        }
+		        //KEY UP
+		        // if (UnityEngine.Input.GetKeyUp(KeyCode.Escape))
+		        {
+			        Keyboard.OnKeyUp(key);
+			        UIManager.KeyboardFocusControl?.InvokeKeyUp(key.keysym.sym, key.keysym.mod);
+			        Scene.OnKeyUp(key);
+			        Plugin.ProcessHotkeys(0, 0, false);
+		        }
+	        }
+	        //F2
+	        if (F2Override)
+	        {
+		        F2Override = false;
+		        UnityEngine.KeyCode activationkey = UnityEngine.KeyCode.F2;
+		        
+		        var key = new SDL_KeyboardEvent {keysym = new SDL_Keysym {sym = (SDL_Keycode) activationkey, mod = keymod}};
+		        //KEY DOWN
+		        // if (UnityEngine.Input.GetKeyDown(KeyCode.Escape))
+		        {
+			        Keyboard.OnKeyDown(key);
+
+			        if (Plugin.ProcessHotkeys((int) key.keysym.sym, (int) key.keysym.mod, true))
+			        {
+				        _ignoreNextTextInput = false;
+				        UIManager.KeyboardFocusControl?.InvokeKeyDown(key.keysym.sym, key.keysym.mod);
+				        Scene.OnKeyDown(key);
+			        }
+			        else
+				        _ignoreNextTextInput = true;
+		        }
+		        //KEY UP
+		        // if (UnityEngine.Input.GetKeyUp(KeyCode.Escape))
+		        {
+			        Keyboard.OnKeyUp(key);
+			        UIManager.KeyboardFocusControl?.InvokeKeyUp(key.keysym.sym, key.keysym.mod);
+			        Scene.OnKeyUp(key);
+			        Plugin.ProcessHotkeys(0, 0, false);
+		        }
+	        }
+	        //F3
+	        if (F3Override)
+	        {
+		        F3Override = false;
+		        UnityEngine.KeyCode activationkey = UnityEngine.KeyCode.F3;
+		        
+		        var key = new SDL_KeyboardEvent {keysym = new SDL_Keysym {sym = (SDL_Keycode) activationkey, mod = keymod}};
+		        //KEY DOWN
+		        // if (UnityEngine.Input.GetKeyDown(KeyCode.Escape))
+		        {
+			        Keyboard.OnKeyDown(key);
+
+			        if (Plugin.ProcessHotkeys((int) key.keysym.sym, (int) key.keysym.mod, true))
+			        {
+				        _ignoreNextTextInput = false;
+				        UIManager.KeyboardFocusControl?.InvokeKeyDown(key.keysym.sym, key.keysym.mod);
+				        Scene.OnKeyDown(key);
+			        }
+			        else
+				        _ignoreNextTextInput = true;
+		        }
+		        //KEY UP
+		        // if (UnityEngine.Input.GetKeyUp(KeyCode.Escape))
+		        {
+			        Keyboard.OnKeyUp(key);
+			        UIManager.KeyboardFocusControl?.InvokeKeyUp(key.keysym.sym, key.keysym.mod);
+			        Scene.OnKeyUp(key);
+			        Plugin.ProcessHotkeys(0, 0, false);
+		        }
+	        }
+	        //F4
+	        if (F1Override)
+	        {
+		        F4Override = false;
+		        UnityEngine.KeyCode activationkey = UnityEngine.KeyCode.F4;
+		        
+		        var key = new SDL_KeyboardEvent {keysym = new SDL_Keysym {sym = (SDL_Keycode) activationkey, mod = keymod}};
+		        //KEY DOWN
+		        // if (UnityEngine.Input.GetKeyDown(KeyCode.Escape))
+		        {
+			        Keyboard.OnKeyDown(key);
+
+			        if (Plugin.ProcessHotkeys((int) key.keysym.sym, (int) key.keysym.mod, true))
+			        {
+				        _ignoreNextTextInput = false;
+				        UIManager.KeyboardFocusControl?.InvokeKeyDown(key.keysym.sym, key.keysym.mod);
+				        Scene.OnKeyDown(key);
+			        }
+			        else
+				        _ignoreNextTextInput = true;
+		        }
+		        //KEY UP
+		        // if (UnityEngine.Input.GetKeyUp(KeyCode.Escape))
+		        {
+			        Keyboard.OnKeyUp(key);
+			        UIManager.KeyboardFocusControl?.InvokeKeyUp(key.keysym.sym, key.keysym.mod);
+			        Scene.OnKeyUp(key);
+			        Plugin.ProcessHotkeys(0, 0, false);
+		        }
+	        }
+	        //F5
+	        if (F5Override)
+	        {
+		        F5Override = false;
+		        UnityEngine.KeyCode activationkey = UnityEngine.KeyCode.F5;
+		        
+		        var key = new SDL_KeyboardEvent {keysym = new SDL_Keysym {sym = (SDL_Keycode) activationkey, mod = keymod}};
+		        //KEY DOWN
+		        // if (UnityEngine.Input.GetKeyDown(KeyCode.Escape))
+		        {
+			        Keyboard.OnKeyDown(key);
+
+			        if (Plugin.ProcessHotkeys((int) key.keysym.sym, (int) key.keysym.mod, true))
+			        {
+				        _ignoreNextTextInput = false;
+				        UIManager.KeyboardFocusControl?.InvokeKeyDown(key.keysym.sym, key.keysym.mod);
+				        Scene.OnKeyDown(key);
+			        }
+			        else
+				        _ignoreNextTextInput = true;
+		        }
+		        //KEY UP
+		        // if (UnityEngine.Input.GetKeyUp(KeyCode.Escape))
+		        {
+			        Keyboard.OnKeyUp(key);
+			        UIManager.KeyboardFocusControl?.InvokeKeyUp(key.keysym.sym, key.keysym.mod);
+			        Scene.OnKeyUp(key);
+			        Plugin.ProcessHotkeys(0, 0, false);
+		        }
+	        }
+	        //F6
+	        if (F6Override)
+	        {
+		        F6Override = false;
+		        UnityEngine.KeyCode activationkey = UnityEngine.KeyCode.F6;
+		        
+		        var key = new SDL_KeyboardEvent {keysym = new SDL_Keysym {sym = (SDL_Keycode) activationkey, mod = keymod}};
+		        //KEY DOWN
+		        // if (UnityEngine.Input.GetKeyDown(KeyCode.Escape))
+		        {
+			        Keyboard.OnKeyDown(key);
+
+			        if (Plugin.ProcessHotkeys((int) key.keysym.sym, (int) key.keysym.mod, true))
+			        {
+				        _ignoreNextTextInput = false;
+				        UIManager.KeyboardFocusControl?.InvokeKeyDown(key.keysym.sym, key.keysym.mod);
+				        Scene.OnKeyDown(key);
+			        }
+			        else
+				        _ignoreNextTextInput = true;
+		        }
+		        //KEY UP
+		        // if (UnityEngine.Input.GetKeyUp(KeyCode.Escape))
+		        {
+			        Keyboard.OnKeyUp(key);
+			        UIManager.KeyboardFocusControl?.InvokeKeyUp(key.keysym.sym, key.keysym.mod);
+			        Scene.OnKeyUp(key);
+			        Plugin.ProcessHotkeys(0, 0, false);
+		        }
+	        }
+	        //F7
+	        if (F7Override)
+	        {
+		        F7Override = false;
+		        UnityEngine.KeyCode activationkey = UnityEngine.KeyCode.F7;
+		        
+		        var key = new SDL_KeyboardEvent {keysym = new SDL_Keysym {sym = (SDL_Keycode) activationkey, mod = keymod}};
+		        //KEY DOWN
+		        // if (UnityEngine.Input.GetKeyDown(KeyCode.Escape))
+		        {
+			        Keyboard.OnKeyDown(key);
+
+			        if (Plugin.ProcessHotkeys((int) key.keysym.sym, (int) key.keysym.mod, true))
+			        {
+				        _ignoreNextTextInput = false;
+				        UIManager.KeyboardFocusControl?.InvokeKeyDown(key.keysym.sym, key.keysym.mod);
+				        Scene.OnKeyDown(key);
+			        }
+			        else
+				        _ignoreNextTextInput = true;
+		        }
+		        //KEY UP
+		        // if (UnityEngine.Input.GetKeyUp(KeyCode.Escape))
+		        {
+			        Keyboard.OnKeyUp(key);
+			        UIManager.KeyboardFocusControl?.InvokeKeyUp(key.keysym.sym, key.keysym.mod);
+			        Scene.OnKeyUp(key);
+			        Plugin.ProcessHotkeys(0, 0, false);
+		        }
+	        }
+	        //F8
+	        if (F8Override)
+	        {
+		        F8Override = false;
+		        UnityEngine.KeyCode activationkey = UnityEngine.KeyCode.F8;
+		        
+		        var key = new SDL_KeyboardEvent {keysym = new SDL_Keysym {sym = (SDL_Keycode) activationkey, mod = keymod}};
+		        //KEY DOWN
+		        // if (UnityEngine.Input.GetKeyDown(KeyCode.Escape))
+		        {
+			        Keyboard.OnKeyDown(key);
+
+			        if (Plugin.ProcessHotkeys((int) key.keysym.sym, (int) key.keysym.mod, true))
+			        {
+				        _ignoreNextTextInput = false;
+				        UIManager.KeyboardFocusControl?.InvokeKeyDown(key.keysym.sym, key.keysym.mod);
+				        Scene.OnKeyDown(key);
+			        }
+			        else
+				        _ignoreNextTextInput = true;
+		        }
+		        //KEY UP
+		        // if (UnityEngine.Input.GetKeyUp(KeyCode.Escape))
+		        {
+			        Keyboard.OnKeyUp(key);
+			        UIManager.KeyboardFocusControl?.InvokeKeyUp(key.keysym.sym, key.keysym.mod);
+			        Scene.OnKeyUp(key);
+			        Plugin.ProcessHotkeys(0, 0, false);
+		        }
+	        }
+	        //F9
+	        if (F9Override)
+	        {
+		        F9Override = false;
+		        UnityEngine.KeyCode activationkey = UnityEngine.KeyCode.F9;
+		        
+		        var key = new SDL_KeyboardEvent {keysym = new SDL_Keysym {sym = (SDL_Keycode) activationkey, mod = keymod}};
+		        //KEY DOWN
+		        // if (UnityEngine.Input.GetKeyDown(KeyCode.Escape))
+		        {
+			        Keyboard.OnKeyDown(key);
+
+			        if (Plugin.ProcessHotkeys((int) key.keysym.sym, (int) key.keysym.mod, true))
+			        {
+				        _ignoreNextTextInput = false;
+				        UIManager.KeyboardFocusControl?.InvokeKeyDown(key.keysym.sym, key.keysym.mod);
+				        Scene.OnKeyDown(key);
+			        }
+			        else
+				        _ignoreNextTextInput = true;
+		        }
+		        //KEY UP
+		        // if (UnityEngine.Input.GetKeyUp(KeyCode.Escape))
+		        {
+			        Keyboard.OnKeyUp(key);
+			        UIManager.KeyboardFocusControl?.InvokeKeyUp(key.keysym.sym, key.keysym.mod);
+			        Scene.OnKeyUp(key);
+			        Plugin.ProcessHotkeys(0, 0, false);
+		        }
+	        }
+	        //F10
+	        if (F10Override)
+	        {
+		        F10Override = false;
+		        UnityEngine.KeyCode activationkey = UnityEngine.KeyCode.F10;
+		        
+		        var key = new SDL_KeyboardEvent {keysym = new SDL_Keysym {sym = (SDL_Keycode) activationkey, mod = keymod}};
+		        //KEY DOWN
+		        // if (UnityEngine.Input.GetKeyDown(KeyCode.Escape))
+		        {
+			        Keyboard.OnKeyDown(key);
+
+			        if (Plugin.ProcessHotkeys((int) key.keysym.sym, (int) key.keysym.mod, true))
+			        {
+				        _ignoreNextTextInput = false;
+				        UIManager.KeyboardFocusControl?.InvokeKeyDown(key.keysym.sym, key.keysym.mod);
+				        Scene.OnKeyDown(key);
+			        }
+			        else
+				        _ignoreNextTextInput = true;
+		        }
+		        //KEY UP
+		        // if (UnityEngine.Input.GetKeyUp(KeyCode.Escape))
+		        {
+			        Keyboard.OnKeyUp(key);
+			        UIManager.KeyboardFocusControl?.InvokeKeyUp(key.keysym.sym, key.keysym.mod);
+			        Scene.OnKeyUp(key);
+			        Plugin.ProcessHotkeys(0, 0, false);
+		        }
+	        }
+	        //F11
+	        if (F11Override)
+	        {
+		        F11Override = false;
+		        UnityEngine.KeyCode activationkey = UnityEngine.KeyCode.F11;
+		        
+		        var key = new SDL_KeyboardEvent {keysym = new SDL_Keysym {sym = (SDL_Keycode) activationkey, mod = keymod}};
+		        //KEY DOWN
+		        // if (UnityEngine.Input.GetKeyDown(KeyCode.Escape))
+		        {
+			        Keyboard.OnKeyDown(key);
+
+			        if (Plugin.ProcessHotkeys((int) key.keysym.sym, (int) key.keysym.mod, true))
+			        {
+				        _ignoreNextTextInput = false;
+				        UIManager.KeyboardFocusControl?.InvokeKeyDown(key.keysym.sym, key.keysym.mod);
+				        Scene.OnKeyDown(key);
+			        }
+			        else
+				        _ignoreNextTextInput = true;
+		        }
+		        //KEY UP
+		        // if (UnityEngine.Input.GetKeyUp(KeyCode.Escape))
+		        {
+			        Keyboard.OnKeyUp(key);
+			        UIManager.KeyboardFocusControl?.InvokeKeyUp(key.keysym.sym, key.keysym.mod);
+			        Scene.OnKeyUp(key);
+			        Plugin.ProcessHotkeys(0, 0, false);
+		        }
+	        }
+	        //F12
+	        if (F12Override)
+	        {
+		        F12Override = false;
+		        UnityEngine.KeyCode activationkey = UnityEngine.KeyCode.F12;
+		        
+		        var key = new SDL_KeyboardEvent {keysym = new SDL_Keysym {sym = (SDL_Keycode) activationkey, mod = keymod}};
+		        //KEY DOWN
+		        // if (UnityEngine.Input.GetKeyDown(KeyCode.Escape))
+		        {
+			        Keyboard.OnKeyDown(key);
+
+			        if (Plugin.ProcessHotkeys((int) key.keysym.sym, (int) key.keysym.mod, true))
+			        {
+				        _ignoreNextTextInput = false;
+				        UIManager.KeyboardFocusControl?.InvokeKeyDown(key.keysym.sym, key.keysym.mod);
+				        Scene.OnKeyDown(key);
+			        }
+			        else
+				        _ignoreNextTextInput = true;
+		        }
+		        //KEY UP
+		        // if (UnityEngine.Input.GetKeyUp(KeyCode.Escape))
+		        {
+			        Keyboard.OnKeyUp(key);
+			        UIManager.KeyboardFocusControl?.InvokeKeyUp(key.keysym.sym, key.keysym.mod);
+			        Scene.OnKeyUp(key);
+			        Plugin.ProcessHotkeys(0, 0, false);
+		        }
+	        }
+	        //END ADDED
 
             //Input text handling
             if (UnityEngine.Application.isMobilePlatform && TouchScreenKeyboard != null)
@@ -1178,6 +1537,60 @@ namespace ClassicUO
                 }
             }
         }
+        
+        
+	    //ADDED DX4D
+	    SDL2.SDL.SDL_Keymod GetModKeys()
+	    {
+		    //Keyboard handling
+		    var keymod = KeymodOverride;
+		    if (UnityEngine.Input.GetKey(UnityEngine.KeyCode.LeftAlt))
+		    {
+			    keymod |= SDL_Keymod.KMOD_LALT;
+		    }
+		    if (UnityEngine.Input.GetKey(UnityEngine.KeyCode.RightAlt))
+		    {
+			    keymod |= SDL_Keymod.KMOD_RALT;
+		    }
+		    if (UnityEngine.Input.GetKey(UnityEngine.KeyCode.LeftShift))
+		    {
+			    keymod |= SDL_Keymod.KMOD_LSHIFT;
+		    }
+		    if (UnityEngine.Input.GetKey(UnityEngine.KeyCode.RightShift))
+		    {
+			    keymod |= SDL_Keymod.KMOD_RSHIFT;
+		    }
+		    if (UnityEngine.Input.GetKey(UnityEngine.KeyCode.LeftControl))
+		    {
+			    keymod |= SDL_Keymod.KMOD_LCTRL;
+		    }
+		    if (UnityEngine.Input.GetKey(UnityEngine.KeyCode.RightControl))
+		    {
+			    keymod |= SDL_Keymod.KMOD_RCTRL;
+		    }
+		    return keymod;
+	    }
+	    /*
+	    SDL2.SDL.SDL_Keycode GetKeys()
+	    {
+		    SDL_Keycode keycode = SDL2.SDL.SDL_Keycode.SDLK_F1;
+		
+		    if (ctrlKeyButtonPresenter.ToggledOn)
+		    {
+			    keycode |= SDL_Keycode.SDLK_F1;
+		    }
+		    if (altKeyButtonPresenter.ToggledOn)
+		    {
+			    keycode |= SDL_Keycode.SDLK_F2;
+		    }
+		    if (shiftKeyButtonPresenter.ToggledOn)
+		    {
+			    keycode |= SDL_Keycode.SDLK_F3;
+		    }
+		    return keycode;
+	    }
+	    */
+	    //END ADDED
 
         private void HandleChatMode(string text)
         {

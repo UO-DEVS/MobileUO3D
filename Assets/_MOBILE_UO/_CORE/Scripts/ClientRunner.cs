@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Linq;
 using UnityEngine;
@@ -47,6 +47,25 @@ public class ClientRunner : MonoBehaviour
 	private ModifierKeyButtonPresenter shiftKeyButtonPresenter;
 	[SerializeField]
 	private UnityEngine.UI.Button escButton;
+	
+	//ADDED DX4D
+	[Header("F KEYS")]
+	[SerializeField] private UnityEngine.UI.Button f1Button;
+	[SerializeField] private UnityEngine.UI.Button f2Button;
+	[SerializeField] private UnityEngine.UI.Button f3Button;
+	[SerializeField] private UnityEngine.UI.Button f4Button;
+	
+	[SerializeField] private UnityEngine.UI.Button f5Button;
+	[SerializeField] private UnityEngine.UI.Button f6Button;
+	[SerializeField] private UnityEngine.UI.Button f7Button;
+	[SerializeField] private UnityEngine.UI.Button f8Button;
+	
+	[SerializeField] private UnityEngine.UI.Button f9Button;
+	[SerializeField] private UnityEngine.UI.Button f10Button;
+	[SerializeField] private UnityEngine.UI.Button f11Button;
+	[SerializeField] private UnityEngine.UI.Button f12Button;
+	//END ADDED
+	
 
 	private int lastScreenWidth;
 	private int lastScreenHeight;
@@ -83,6 +102,24 @@ public class ClientRunner : MonoBehaviour
 		OnEnlargeSmallButtonsChanged(UserPreferences.EnlargeSmallButtons.CurrentValue);
 		
 		escButton.onClick.AddListener(OnEscButtonClicked);
+		
+		//ADDED DX4D
+		//F KEYS
+		f1Button.onClick.AddListener(OnF1ButtonClicked);
+		f2Button.onClick.AddListener(OnF2ButtonClicked);
+		f3Button.onClick.AddListener(OnF3ButtonClicked);
+		f4Button.onClick.AddListener(OnF4ButtonClicked);
+		
+		f5Button.onClick.AddListener(OnF5ButtonClicked);
+		f6Button.onClick.AddListener(OnF6ButtonClicked);
+		f7Button.onClick.AddListener(OnF7ButtonClicked);
+		f8Button.onClick.AddListener(OnF8ButtonClicked);
+		
+		f9Button.onClick.AddListener(OnF9ButtonClicked);
+		f10Button.onClick.AddListener(OnF10ButtonClicked);
+		f11Button.onClick.AddListener(OnF11ButtonClicked);
+		f12Button.onClick.AddListener(OnF12ButtonClicked);
+		//END ADDED
 	}
 
 	private void OnDisable()
@@ -100,7 +137,61 @@ public class ClientRunner : MonoBehaviour
 			Client.Game.EscOverride = true;
 		}
 	}
-
+	
+	//ADDED DX4D
+	//F1-F4
+	private void OnF1ButtonClicked()
+	{
+		if (Client.Game != null) { Client.Game.F1Override = true; }
+	}
+	private void OnF2ButtonClicked()
+	{
+		if (Client.Game != null) { Client.Game.F2Override = true; }
+	}
+	private void OnF3ButtonClicked()
+	{
+		if (Client.Game != null) { Client.Game.F3Override = true; }
+	}
+	private void OnF4ButtonClicked()
+	{
+		if (Client.Game != null) { Client.Game.F4Override = true; }
+	}
+	//F5-F8
+	private void OnF5ButtonClicked()
+	{
+		if (Client.Game != null) { Client.Game.F5Override = true; }
+	}
+	private void OnF6ButtonClicked()
+	{
+		if (Client.Game != null) { Client.Game.F6Override = true; }
+	}
+	private void OnF7ButtonClicked()
+	{
+		if (Client.Game != null) { Client.Game.F7Override = true; }
+	}
+	private void OnF8ButtonClicked()
+	{
+		if (Client.Game != null) { Client.Game.F8Override = true; }
+	}
+	//F5-F8
+	private void OnF9ButtonClicked()
+	{
+		if (Client.Game != null) { Client.Game.F9Override = true; }
+	}
+	private void OnF10ButtonClicked()
+	{
+		if (Client.Game != null) { Client.Game.F10Override = true; }
+	}
+	private void OnF11ButtonClicked()
+	{
+		if (Client.Game != null) { Client.Game.F11Override = true; }
+	}
+	private void OnF12ButtonClicked()
+	{
+		if (Client.Game != null) { Client.Game.F12Override = true; }
+	}
+	//END ADDED
+	
 	private void OnEnlargeSmallButtonsChanged(int currentValue)
 	{
 		var enlarge = currentValue == (int) PreferenceEnums.EnlargeSmallButtons.On;
@@ -261,7 +352,18 @@ public class ClientRunner : MonoBehaviour
 	        gameScene.JoystickInput = new Microsoft.Xna.Framework.Vector2(movementJoystick.Input.x, -1 * movementJoystick.Input.y);
         }
 
-        var keymod = SDL.SDL_Keymod.KMOD_NONE;
+		var keymod = GetModKeys(); //ADDED DX4D
+		//var keycode = GetKeys(); //ADDED DX4D
+
+		Client.Game.KeymodOverride = keymod;
+		//Client.Game.EscOverride;
+        Client.Game.Tick(deltaTime);
+	}
+	
+	//ADDED DX4D
+	SDL.SDL_Keymod GetModKeys()
+	{
+		var keymod = SDL.SDL_Keymod.KMOD_NONE;
         if (ctrlKeyButtonPresenter.ToggledOn)
         {
 	        keymod |= SDL.SDL_Keymod.KMOD_CTRL;
@@ -274,10 +376,28 @@ public class ClientRunner : MonoBehaviour
         {
 	        keymod |= SDL.SDL_Keymod.KMOD_SHIFT;
         }
-
-        Client.Game.KeymodOverride = keymod;
-        Client.Game.Tick(deltaTime);
+		return keymod;
 	}
+	/*
+	SDL.SDL_Keycode GetKeys()
+	{
+		SDL.SDL_Keycode keycode = SDL.SDL_Keycode.SDLK_F1;
+		
+		if (f1KeyButtonPresenter.ToggledOn)
+        {
+	        keycode |= SDL.SDL_Keycode.SDLK_F1;
+        }
+        if (altKeyButtonPresenter.ToggledOn)
+        {
+	        keycode |= SDL.SDL_Keycode.SDLK_F2;
+        }
+        if (shiftKeyButtonPresenter.ToggledOn)
+        {
+	        keycode |= SDL.SDL_Keycode.SDLK_F3;
+        }
+		return keycode;
+	}*/
+	//END ADDED
 
 	private void OnPostRender()
     {
