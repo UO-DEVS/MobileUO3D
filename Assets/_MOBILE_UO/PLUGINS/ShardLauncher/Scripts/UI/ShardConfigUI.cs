@@ -51,8 +51,15 @@ public class ShardConfigUI : MonoBehaviour
 		Center(configPanel);
 		
 		BringToFront(closeButton);
-		BottomCenter(closeButton);
-		Offset(closeButton, 0, 64, 0);
+		
+		//TOP CENTER
+		TopCenter(closeButton);
+		//Offset(closeButton, 0, 0, 0);
+		
+		//BOTTOM CENTER
+		//BottomCenter(closeButton);
+		//Offset(closeButton, 0, 64, 0);
+		
 		//TopCenter(closeButton);
 		//Offset(closeButton, 342, 0, 0);
 		//StickTo(closeButton, transform);
@@ -99,11 +106,12 @@ public class ShardConfigUI : MonoBehaviour
 	{
 		target.SetParent(transform.parent.parent.parent);
 	}
-	//STICK TO
-	public void StickTo(Transform target, Transform destination)
+	//MOVE TO
+	public void MoveTo(Transform target, Transform destination)
 	{
 		target.position = destination.position;
 	}
+	// C O N S T R A I N T S
 	//ATTACH
 	public void Attach(Transform target, Transform destination, bool retainWorldPosition)
 	{
