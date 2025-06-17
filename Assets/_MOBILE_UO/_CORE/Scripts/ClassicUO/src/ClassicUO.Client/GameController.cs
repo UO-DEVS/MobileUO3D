@@ -912,6 +912,7 @@ namespace ClassicUO
 	    public bool EscOverride;
         
 	    //ADDED DX4D
+	    //F KEYS
 	    public bool F1Override;
 	    public bool F2Override;
 	    public bool F3Override;
@@ -926,6 +927,19 @@ namespace ClassicUO
 	    public bool F10Override;
 	    public bool F11Override;
 	    public bool F12Override;
+	    //NUM KEYS
+	    public bool NUM1Override;
+	    public bool NUM2Override;
+	    public bool NUM3Override;
+	    public bool NUM4Override;
+	    
+	    public bool NUM5Override;
+	    public bool NUM6Override;
+	    public bool NUM7Override;
+	    public bool NUM8Override;
+	    
+	    public bool NUM9Override;
+	    public bool NUM0Override;
 	    //END ADDED
         
         private int zoomCounter;

@@ -64,6 +64,20 @@ public class ClientRunner : MonoBehaviour
 	[SerializeField] private UnityEngine.UI.Button f10Button;
 	[SerializeField] private UnityEngine.UI.Button f11Button;
 	[SerializeField] private UnityEngine.UI.Button f12Button;
+	
+	[Header("NUM KEYS")]
+	[SerializeField] private UnityEngine.UI.Button NUM1Button;
+	[SerializeField] private UnityEngine.UI.Button NUM2Button;
+	[SerializeField] private UnityEngine.UI.Button NUM3Button;
+	[SerializeField] private UnityEngine.UI.Button NUM4Button;
+	
+	[SerializeField] private UnityEngine.UI.Button NUM5Button;
+	[SerializeField] private UnityEngine.UI.Button NUM6Button;
+	[SerializeField] private UnityEngine.UI.Button NUM7Button;
+	[SerializeField] private UnityEngine.UI.Button NUM8Button;
+	
+	[SerializeField] private UnityEngine.UI.Button NUM9Button;
+	[SerializeField] private UnityEngine.UI.Button NUM0Button;
 	//END ADDED
 	
 
@@ -119,6 +133,19 @@ public class ClientRunner : MonoBehaviour
 		f10Button.onClick.AddListener(OnF10ButtonClicked);
 		f11Button.onClick.AddListener(OnF11ButtonClicked);
 		f12Button.onClick.AddListener(OnF12ButtonClicked);
+		//NUM KEYS
+		NUM1Button.onClick.AddListener(OnNUM1ButtonClicked);
+		NUM2Button.onClick.AddListener(OnNUM2ButtonClicked);
+		NUM3Button.onClick.AddListener(OnNUM3ButtonClicked);
+		NUM4Button.onClick.AddListener(OnNUM4ButtonClicked);
+		
+		NUM5Button.onClick.AddListener(OnNUM5ButtonClicked);
+		NUM6Button.onClick.AddListener(OnNUM6ButtonClicked);
+		NUM7Button.onClick.AddListener(OnNUM7ButtonClicked);
+		NUM8Button.onClick.AddListener(OnNUM8ButtonClicked);
+		
+		NUM9Button.onClick.AddListener(OnNUM9ButtonClicked);
+		NUM0Button.onClick.AddListener(OnNUM0ButtonClicked);
 		//END ADDED
 	}
 
@@ -139,6 +166,7 @@ public class ClientRunner : MonoBehaviour
 	}
 	
 	//ADDED DX4D
+	// F  K E Y S
 	//F1-F4
 	private void OnF1ButtonClicked()
 	{
@@ -189,6 +217,48 @@ public class ClientRunner : MonoBehaviour
 	private void OnF12ButtonClicked()
 	{
 		if (Client.Game != null) { Client.Game.F12Override = true; }
+	}
+	
+	// N U M B E R S
+	private void OnNUM1ButtonClicked()
+	{
+		if (Client.Game != null) { Client.Game.NUM1Override = true; }
+	}
+	private void OnNUM2ButtonClicked()
+	{
+		if (Client.Game != null) { Client.Game.NUM2Override = true; }
+	}
+	private void OnNUM3ButtonClicked()
+	{
+		if (Client.Game != null) { Client.Game.NUM3Override = true; }
+	}
+	private void OnNUM4ButtonClicked()
+	{
+		if (Client.Game != null) { Client.Game.NUM4Override = true; }
+	}
+	private void OnNUM5ButtonClicked()
+	{
+		if (Client.Game != null) { Client.Game.NUM5Override = true; }
+	}
+	private void OnNUM6ButtonClicked()
+	{
+		if (Client.Game != null) { Client.Game.NUM6Override = true; }
+	}
+	private void OnNUM7ButtonClicked()
+	{
+		if (Client.Game != null) { Client.Game.NUM7Override = true; }
+	}
+	private void OnNUM8ButtonClicked()
+	{
+		if (Client.Game != null) { Client.Game.NUM8Override = true; }
+	}
+	private void OnNUM9ButtonClicked()
+	{
+		if (Client.Game != null) { Client.Game.NUM9Override = true; }
+	}
+	private void OnNUM0ButtonClicked()
+	{
+		if (Client.Game != null) { Client.Game.NUM0Override = true; }
 	}
 	//END ADDED
 	
