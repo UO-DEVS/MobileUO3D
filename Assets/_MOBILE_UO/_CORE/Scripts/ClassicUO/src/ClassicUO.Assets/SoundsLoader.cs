@@ -10,8 +10,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 // MobileUO: added imports
-using System.Text.RegularExpressions;
-using ClassicUO.Utility.Logging;
+//using System.Text.RegularExpressions;
+//using ClassicUO.Utility.Logging;
 using System.Linq;
 
 namespace ClassicUO.Assets
