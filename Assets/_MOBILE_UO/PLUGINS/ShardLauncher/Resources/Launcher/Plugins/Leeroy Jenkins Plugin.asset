@@ -13,3 +13,11 @@ MonoBehaviour:
   m_Name: Leeroy Jenkins Plugin
   m_EditorClassIdentifier: 
   _say: Leeeroy Jenkins!!!
+  config:
+    OnLoad: 1
+    OnServerChanged: 1
+    OnBeforeServerLaunch: 1
+    OnServerLaunch: 1
+    OnGameClientStart: 1
+    OnClientDownloadStart: 1
+    OnDownloadsDeleted: 1
