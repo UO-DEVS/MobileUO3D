@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class ShardConfigUI : MonoBehaviour
+public class ShardConfigUI : UIBehaviour
 {
 	[Header("UI TARGETS")]
 	[SerializeField] UI.Tools.ToggleTargets configButtonGroup;
@@ -24,23 +24,14 @@ public class ShardConfigUI : MonoBehaviour
 	//CLIENT
 	[SerializeField] private TMP_InputField _clientVersionText;
 	
-	//INITIALIZE
-	//public void Initialize(ShardConfiguration newShard)
-	//{
-	//	if (newShard)
-	//	{
-	//		DisplayShard(newShard);
-	//	}
-	//}
-	
 	//INIT
-	public void Init()
+	public override void Init()
 	{
 		if (configButtonGroup && configButton) configButtonGroup.Add(configButton);
 		//Attach(configButton, configButtonGroup, true);
 	}
 	//SHOW
-	public void Show()
+	public override void Show()
 	{
 		Activate(configPanel);
 		Activate(closeButton);
@@ -51,21 +42,10 @@ public class ShardConfigUI : MonoBehaviour
 		Center(configPanel);
 		
 		BringToFront(closeButton);
-		
-		//TOP CENTER
 		TopCenter(closeButton);
-		//Offset(closeButton, 0, 0, 0);
-		
-		//BOTTOM CENTER
-		//BottomCenter(closeButton);
-		//Offset(closeButton, 0, 64, 0);
-		
-		//TopCenter(closeButton);
-		//Offset(closeButton, 342, 0, 0);
-		//StickTo(closeButton, transform);
 	}
 	//HIDE
-	public void Hide()
+	public override void Hide()
 	{
 		Deactivate(configPanel);
 		Deactivate(closeButton);
@@ -73,62 +53,6 @@ public class ShardConfigUI : MonoBehaviour
 		if (configButtonGroup.gameObject.activeSelf) Activate(configButton);
 		else Deactivate(configButton);
 	}
-	
-	// A L I G N M E N T
-	//OFFSET
-	public void Offset(Transform target, int xoffset, int yoffset, int zoffset)
-	{
-		target.position = new Vector3(target.position.x + xoffset, target.position.y + yoffset, target.position.z + zoffset);
-	}
-	//CENTER
-	public void Center(Transform target)
-	{
-		target.position = new Vector3(Screen.width / 2, Screen.height / 2, 0);
-	}
-	//TOP RIGHT
-	public void TopRight(Transform target)
-	{
-		target.position = new Vector3(Screen.width, Screen.height, 0);
-	}
-	//TOP CENTER
-	public void TopCenter(Transform target)
-	{
-		target.position = new Vector3(Screen.width / 2, Screen.height, 0);
-	}
-	//BOTTOM CENTER
-	public void BottomCenter(Transform target)
-	{
-		target.position = new Vector3(Screen.width / 2, 0, 0);
-	}
-	// P O S I T I O N
-	//BRING TO FRONT
-	public void BringToFront(Transform target)
-	{
-		target.SetParent(transform.parent.parent.parent);
-	}
-	//MOVE TO
-	public void MoveTo(Transform target, Transform destination)
-	{
-		target.position = destination.position;
-	}
-	// C O N S T R A I N T S
-	//ATTACH
-	public void Attach(Transform target, Transform destination, bool retainWorldPosition)
-	{
-		target.SetParent(destination, retainWorldPosition);
-	}
-	// V I S I B I L I T Y
-	//ACTIVATE
-	public void Activate(Transform target)
-	{
-		target.gameObject.SetActive(true);
-	}
-	//DEACTIVATE
-	public void Deactivate(Transform target)
-	{
-		target.gameObject.SetActive(false);
-	}
-	
 	
 	//ASSIGNMENT
 	public void AssignServer(string serverName, string serverIP, string serverPort)
