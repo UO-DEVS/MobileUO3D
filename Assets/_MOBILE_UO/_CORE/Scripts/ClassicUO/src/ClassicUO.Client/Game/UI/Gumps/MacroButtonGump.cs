@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: BSD-2-Clause
+﻿// SPDX-License-Identifier: BSD-2-Clause
 
 using System;
 using System.Xml;
@@ -29,8 +29,8 @@ namespace ClassicUO.Game.UI.Gumps
 
         public MacroButtonGump(World world) : base(world,0, 0)
         {
-            CanMove = true;
-            AcceptMouseInput = true;
+	        CanMove = true;
+	        AcceptMouseInput = true;
             CanCloseWithRightClick = true;
             WantUpdateSize = false;
             WidthMultiplier = 2;

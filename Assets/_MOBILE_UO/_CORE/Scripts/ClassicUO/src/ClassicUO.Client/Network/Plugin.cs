@@ -714,20 +714,25 @@ namespace ClassicUO.Network
                 }
             }
         }
+	    
+	    //ADDED DX4D
+	    static bool GameIsNotRunning => Client.Game == null;
+	    static bool ClientIsNotInGame => (!Client.Game.UO.World?.InGame ?? false);
+	    static bool SystemChatEnabled => UIManager.SystemChat != null;
+	    static bool ProfileExists => ProfileManager.CurrentProfile != null;
+	    static bool ChatIsActive => ProfileManager.CurrentProfile.ActivateChatAfterEnter && UIManager.SystemChat.IsActive;
+	    static bool NotEnteringChatText => UIManager.KeyboardFocusControl != UIManager.SystemChat.TextBoxControl;
+	    //END ADDED
 
         internal static bool ProcessHotkeys(int key, int mod, bool ispressed)
-        {
-            if ((!Client.Game.UO.World?.InGame ?? false) || UIManager.SystemChat != null && (
-                        ProfileManager.CurrentProfile != null
-                            && ProfileManager.CurrentProfile.ActivateChatAfterEnter
-                            && UIManager.SystemChat.IsActive
-                        || UIManager.KeyboardFocusControl != UIManager.SystemChat.TextBoxControl
-                    )
-            )
+	    {
+		    if (GameIsNotRunning || ClientIsNotInGame
+			    || SystemChatEnabled && ( ProfileExists && ChatIsActive || NotEnteringChatText )
+            	)
             {
                 return true;
             }
-
+            
             var ok = Client.Game.PluginHost?.Hotkey(key, mod, ispressed);
 
             bool result = ok ?? true;

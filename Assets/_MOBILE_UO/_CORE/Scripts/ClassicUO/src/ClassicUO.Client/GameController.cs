@@ -32,7 +32,13 @@ namespace ClassicUO
     {
         private SDL_EventFilter _filter;
 
-        private bool _ignoreNextTextInput;
+	    private bool _ignoreNextTextInput;
+	    //ADDED DX4D
+	    public void IgnoreNextTextInput(bool ignore = true)
+	    {
+	    	_ignoreNextTextInput = ignore;
+	    }
+	    //END ADDED
         private readonly float[] _intervalFixedUpdate = new float[2];
         private double _totalElapsed, _currentFpsTime;
         private uint _totalFrames;
@@ -1117,61 +1123,67 @@ namespace ClassicUO
 
             if (EscOverride)
             {
-                EscOverride = false;
-                var key = new SDL_KeyboardEvent {keysym = new SDL_Keysym {sym = (SDL_Keycode) UnityEngine.KeyCode.Escape, mod = keymod}};
-                // if (UnityEngine.Input.GetKeyDown(KeyCode.Escape))
-                {
-                    Keyboard.OnKeyDown(key);
-
-                    if (Plugin.ProcessHotkeys((int) key.keysym.sym, (int) key.keysym.mod, true))
-                    {
-                        _ignoreNextTextInput = false;
-                        UIManager.KeyboardFocusControl?.InvokeKeyDown(key.keysym.sym, key.keysym.mod);
-                        Scene.OnKeyDown(key);
-                    }
-                    else
-                        _ignoreNextTextInput = true;
-                }
-                // if (UnityEngine.Input.GetKeyUp(KeyCode.Escape))
-                {
-                    Keyboard.OnKeyUp(key);
-                    UIManager.KeyboardFocusControl?.InvokeKeyUp(key.keysym.sym, key.keysym.mod);
-                    Scene.OnKeyUp(key);
-                    Plugin.ProcessHotkeys(0, 0, false);
-                }
+	            EscOverride = false;
+            	PressKey(UnityEngine.KeyCode.Escape);
             }
             
 	        //ADDED DX4D
+	        if (NUM1Override)
+	        {
+		        NUM1Override = false;
+		        PressKey(UnityEngine.KeyCode.Alpha1);
+	        }
+	        if (NUM2Override)
+	        {
+		        NUM2Override = false;
+		        PressKey(UnityEngine.KeyCode.Alpha2);
+	        }
+	        if (NUM3Override)
+	        {
+		        NUM3Override = false;
+		        PressKey(UnityEngine.KeyCode.Alpha3);
+	        }
+	        if (NUM4Override)
+	        {
+		        NUM4Override = false;
+		        PressKey(UnityEngine.KeyCode.Alpha4);
+	        }
+	        if (NUM5Override)
+	        {
+		        NUM5Override = false;
+		        PressKey(UnityEngine.KeyCode.Alpha5);
+	        }
+	        if (NUM6Override)
+	        {
+		        NUM6Override = false;
+		        PressKey(UnityEngine.KeyCode.Alpha6);
+	        }
+	        if (NUM7Override)
+	        {
+		        NUM7Override = false;
+		        PressKey(UnityEngine.KeyCode.Alpha7);
+	        }
+	        if (NUM8Override)
+	        {
+		        NUM8Override = false;
+		        PressKey(UnityEngine.KeyCode.Alpha8);
+	        }
+	        if (NUM9Override)
+	        {
+		        NUM9Override = false;
+		        PressKey(UnityEngine.KeyCode.Alpha9);
+	        }
+	        if (NUM0Override)
+	        {
+		        NUM0Override = false;
+		        PressKey(UnityEngine.KeyCode.Alpha0);
+	        }
 	        // F1 > F4
 	        //F1
 	        if (F1Override)
 	        {
 		        F1Override = false;
-		        UnityEngine.KeyCode activationkey = UnityEngine.KeyCode.F1;
-		        
-		        var key = new SDL_KeyboardEvent {keysym = new SDL_Keysym {sym = (SDL_Keycode) activationkey, mod = keymod}};
-		        //KEY DOWN
-		        // if (UnityEngine.Input.GetKeyDown(KeyCode.Escape))
-		        {
-			        Keyboard.OnKeyDown(key);
-
-			        if (Plugin.ProcessHotkeys((int) key.keysym.sym, (int) key.keysym.mod, true))
-			        {
-				        _ignoreNextTextInput = false;
-				        UIManager.KeyboardFocusControl?.InvokeKeyDown(key.keysym.sym, key.keysym.mod);
-				        Scene.OnKeyDown(key);
-			        }
-			        else
-				        _ignoreNextTextInput = true;
-		        }
-		        //KEY UP
-		        // if (UnityEngine.Input.GetKeyUp(KeyCode.Escape))
-		        {
-			        Keyboard.OnKeyUp(key);
-			        UIManager.KeyboardFocusControl?.InvokeKeyUp(key.keysym.sym, key.keysym.mod);
-			        Scene.OnKeyUp(key);
-			        Plugin.ProcessHotkeys(0, 0, false);
-		        }
+		        PressKey(UnityEngine.KeyCode.F1);
 	        }
 	        //F2
 	        if (F2Override)
@@ -1554,6 +1566,33 @@ namespace ClassicUO
         
         
 	    //ADDED DX4D
+	    void PressKey(UnityEngine.KeyCode keyToPress)
+	    {
+	    	var modkeys = GetModKeys();
+		    var key = new SDL_KeyboardEvent {keysym = new SDL_Keysym {sym = (SDL_Keycode) keyToPress, mod = modkeys}};
+		    
+		    // if (UnityEngine.Input.GetKeyDown(KeyCode.Escape))
+		    {
+			    Keyboard.OnKeyDown(key);
+
+			    if (Plugin.ProcessHotkeys((int) key.keysym.sym, (int) key.keysym.mod, true))
+			    {
+				    _ignoreNextTextInput = false;
+				    UIManager.KeyboardFocusControl?.InvokeKeyDown(key.keysym.sym, key.keysym.mod);
+				    Scene.OnKeyDown(key);
+			    }
+			    else
+				    _ignoreNextTextInput = true;
+		    }
+		    // if (UnityEngine.Input.GetKeyUp(KeyCode.Escape))
+		    {
+			    Keyboard.OnKeyUp(key);
+			    UIManager.KeyboardFocusControl?.InvokeKeyUp(key.keysym.sym, key.keysym.mod);
+			    Scene.OnKeyUp(key);
+			    Plugin.ProcessHotkeys(0, 0, false);
+		    }
+	    }
+	    
 	    SDL2.SDL.SDL_Keymod GetModKeys()
 	    {
 		    //Keyboard handling
