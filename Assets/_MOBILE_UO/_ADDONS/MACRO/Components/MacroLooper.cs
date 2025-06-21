@@ -108,6 +108,18 @@ public class MacroLooper : MonoBehaviour
 		if (_delayBox) _delayBox.text = _delay.ToString();
 	}
 	
+	//SETTINGS PANEL
+	[SerializeField] Transform _settingsPanel;
+	public void ShowSettings() => ToggleSettings(true);
+	public void HideSettings() => ToggleSettings(false);
+	public void ToggleSettings() => ToggleSettings(!_settingsPanel.gameObject.active);
+	
+	//TOGGLE SETTINGS
+	public void ToggleSettings(bool show)
+	{
+		if (_settingsPanel) _settingsPanel.gameObject.SetActive(show);
+	}
+	
 	[Header("SETTINGS")]
 	[SerializeField] bool _loop = false;
 	[SerializeField] KeyCode _key = KeyCode.None;
@@ -152,6 +164,7 @@ public class MacroLooper : MonoBehaviour
 		if (!_loopIndicator) Debug.LogWarning("You must assign the loop indicator to " + name);
 		if (!_delayBox) _delayBox = GetComponentInChildren<TMPro.TMP_InputField>();
 		if (!_skillDropdown) _skillDropdown = GetComponentInChildren<TMPro.TMP_Dropdown>();
+		if (!_skillLabel) Debug.LogWarning("You must assign the settings panel to " + name);
 	}
 	protected void Awake()
 	{

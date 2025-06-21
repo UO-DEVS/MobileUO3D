@@ -6,4 +6,6 @@ public class ToggleOnOff : MonoBehaviour
 	{
 		gameObject.SetActive(!gameObject.active);
 	}
+	public void Show() => gameObject.SetActive(true);
+	public void Hide() => gameObject.SetActive(false);
 }
