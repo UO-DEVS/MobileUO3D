@@ -1,4 +1,5 @@
-// SPDX-License-Identifier: BSD-2-Clause
+﻿// SPDX-License-Identifier: BSD-2-Clause
+//MODIFIED BY DX4D
 
 using System;
 using System.Collections.Generic;
@@ -12,19 +13,36 @@ using ClassicUO.Game.Managers;
 using ClassicUO.Game.Scenes;
 using ClassicUO.Utility.Logging;
 using SDL2;
+using static AssistantConfig; //ADDED DX4D
 
 namespace ClassicUO.Utility.Platforms
 {
     internal sealed class UoAssist
-    {
+	{
+		const string PLUGIN_PATH = "UO/Plugins/_DefaultAssistantPlugins";
+		
+		//ADDED DX4D
+		private AssistantPlugin _assistantPlugin;
+		public AssistantPlugin assistantPlugin
+		{
+			get
+			{
+				if (!usePlugins) return null;
+				if (!_assistantPlugin) _assistantPlugin = UnityEngine.Resources.Load<AssistantPlugin>(PLUGIN_PATH);
+				return _assistantPlugin;
+			}
+		}
+		//END ADDED
+		
         private readonly CustomWindow _customWindow;
         private readonly World _world;
 
         public UoAssist(World world)
         {
             _world = world;
-
-            if (Environment.OSVersion.Platform != PlatformID.Win32NT)
+	        
+	        //if (Environment.OSVersion.Platform != PlatformID.Win32NT) //REMOVED DX4D
+	        if (!useWindowsAssistant && Environment.OSVersion.Platform != PlatformID.Win32NT) //ADDED DX4D
             {
                 Log.Warn("This OS does not support the UOAssist API");
 
@@ -33,45 +51,71 @@ namespace ClassicUO.Utility.Platforms
 
             try
             {
-                if (Client.Game?.Window != null)
-                    _customWindow = new CustomWindow(Client.Game.Window.Handle, world, "UOASSIST-TP-MSG-WND");
+	            if (Client.Game?.Window != null)
+	            {
+		            _customWindow = new CustomWindow(Client.Game.Window.Handle, world, "UOASSIST-TP-MSG-WND");
+		            
+		            assistantPlugin?.Activate(world); //ADDED DX4D
+	            }
             }
             catch
             { }
         }
 
         public void SignalMapChanged(int newMap)
-        {
+		{
             _customWindow?.SignalMapChanged(newMap);
+			assistantPlugin?.MapChanged(_world, newMap); //ADDED DX4D
         }
 
         public void SignalMessage(string msg)
         {
-            _customWindow?.SignalMessage(msg);
+	        _customWindow?.SignalMessage(msg);
+	        assistantPlugin?.Message(_world, msg); //ADDED DX4D
         }
 
         public void SignalHits()
         {
-            _customWindow?.SignalHitsUpdate();
-        }
-
-        public void SignalStamina()
-        {
-            _customWindow?.SignalStaminaUpdate();
+	        _customWindow?.SignalHitsUpdate();
+	        assistantPlugin?.HealthUpdate(_world); //ADDED DX4D
         }
 
         public void SignalMana()
         {
-            _customWindow?.SignalManaUpdate();
+	        _customWindow?.SignalManaUpdate();
+	        assistantPlugin?.ManaUpdate(_world); //ADDED DX4D
+        }
+
+        public void SignalStamina()
+        {
+	        _customWindow?.SignalStaminaUpdate();
+	        assistantPlugin?.StaminaUpdate(_world); //ADDED DX4D
         }
 
         public void SignalAddMulti(ushort graphic, ushort x, ushort y)
         {
-            _customWindow?.SignalAddMulti(graphic, x, y);
+	       
+	        _customWindow?.SignalAddMulti(graphic, x, y);
+	        assistantPlugin?.AddMulti(_world, graphic, x, y); //ADDED DX4D
         }
 
         private class CustomWindow : IDisposable
-        {
+		{
+			const string PLUGIN_PATH = "UO/Plugins/_DefaultAssistantPlugins";
+		
+			//ADDED DX4D
+			private AssistantPlugin _assistantPlugin;
+			public AssistantPlugin assistantPlugin
+			{
+				get
+				{
+					if (!usePlugins) return null;
+					if (!_assistantPlugin) _assistantPlugin = UnityEngine.Resources.Load<AssistantPlugin>(PLUGIN_PATH);
+					return _assistantPlugin;
+				}
+			}
+			//END ADDED
+			
             private readonly World _world;
             private const int ERROR_CLASS_ALREADY_EXISTS = 1410;
             public const uint WM_USER = 0x400;
@@ -414,6 +458,7 @@ namespace ClassicUO.Utility.Platforms
                 PostMessage(1425, (IntPtr) GlobalAddAtom(str), IntPtr.Zero);
             }
 
+	        /* //REMOVED DX4D
             public void SignalHitsUpdate()
             {
                 if (_world.Player != null)
@@ -434,9 +479,41 @@ namespace ClassicUO.Utility.Platforms
             {
                 if (_world.Player != null)
                 {
-                    PostMessage((uint) UOAMessage.INT_STATUS, (IntPtr)_world.Player.HitsMax, (IntPtr)_world.Player.Hits);
+	                PostMessage((uint) UOAMessage.INT_STATUS, (IntPtr)_world.Player.HitsMax, (IntPtr)_world.Player.Hits);
                 }
-            }
+	        }
+	        */
+	        //ADDED DX4D
+	        public void SignalHitsUpdate()
+	        {
+		        if (_world.Player != null)
+		        {
+			        PostMessage((uint) UOAMessage.STR_STATUS, (IntPtr)_world.Player.HitsMax, (IntPtr)_world.Player.Hits);
+			        
+			        //assistantPlugin?.HealthUpdate(_world); //ADDED DX4D
+		        }
+	        }
+
+	        public void SignalManaUpdate()
+	        {
+		        if (_world.Player != null)
+		        {
+			        PostMessage((uint) UOAMessage.INT_STATUS, (IntPtr)_world.Player.ManaMax, (IntPtr)_world.Player.Mana);
+			        
+			        //assistantPlugin?.ManaUpdate(_world); //ADDED DX4D
+		        }
+	        }
+
+	        public void SignalStaminaUpdate()
+			{
+		        if (_world.Player != null)
+		        {
+			        PostMessage((uint) UOAMessage.DEX_STATUS, (IntPtr)_world.Player.StaminaMax, (IntPtr)_world.Player.Stamina);
+			        
+			        //assistantPlugin?.StaminaUpdate(_world); //ADDED DX4D
+		        }
+	        }
+	        //END ADDED
 
             public void SignalAddMulti(ushort graphic, ushort x, ushort y)
             {
@@ -454,6 +531,8 @@ namespace ClassicUO.Utility.Platforms
                         PostMessage((IntPtr) k.Value.Handle, (uint) UOAMessage.ADD_MULTI, pos, (IntPtr) graphic);
                     }
                 }
+                
+	            assistantPlugin?.AddMulti(_world, graphic, x, y); //ADDED DX4D
             }
 
             private void PostMessage(uint msg, IntPtr wParam, IntPtr lParam)

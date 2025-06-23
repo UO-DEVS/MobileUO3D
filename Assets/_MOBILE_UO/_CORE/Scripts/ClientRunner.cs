@@ -506,6 +506,10 @@ public class ClientRunner : MonoBehaviour
 	    //NetClient.Socket.Encryption.Type = EncryptionType.NONE;
 	    Settings.GlobalSettings.Encryption = (byte) (config.UseEncryption ? 1 : 0);
 
+
+	    //TODO: Strip out broken plugin system logic
+	    
+	    
 	    //Empty the plugins array because no plugins are working at the moment
 	    Settings.GlobalSettings.Plugins = new string[0];
 	    
