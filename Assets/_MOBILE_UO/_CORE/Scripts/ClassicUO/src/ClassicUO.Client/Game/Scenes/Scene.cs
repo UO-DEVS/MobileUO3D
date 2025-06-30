@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: BSD-2-Clause
+﻿// SPDX-License-Identifier: BSD-2-Clause
 
 using System;
 using ClassicUO.Game.Managers;
@@ -13,8 +13,20 @@ namespace ClassicUO.Game.Scenes
     {
         public bool IsDestroyed { get; private set; }
         public bool IsLoaded { get; private set; }
-        public int RenderedObjectsCount { get; protected set; }
-        public Camera Camera { get; } = new Camera(0.5f, 2.5f, 0.1f);
+	    public int RenderedObjectsCount { get; protected set; }
+	    //ADDED DX4D
+	    private Camera _camera = null;
+	    public Camera Camera
+	    {
+	    	get
+	    	{
+				if (_camera == null) _camera = new Camera(0.5f, 2.5f, 0.1f);
+		    	//else _camera.SetZoom(0.5f, 2.5f, 0.1f); //REMOVED DX4D
+				return _camera;
+	    	}
+	    }
+	    //END ADDED
+	    //public Camera Camera { get; } = new Camera(0.5f, 2.5f, 0.1f); //REMOVED DX4D
 
 
 

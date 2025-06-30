@@ -1,4 +1,4 @@
-using System.IO;
+﻿using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -6,8 +6,7 @@ using UnityEngine;
 public class SupportedServerConfigurationsEditor : Editor
 {
     public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
+	{
         if (GUILayout.Button("Write out to JSON"))
         {
             var json = Newtonsoft.Json.JsonConvert.SerializeObject((target as SupportedServerConfigurations).ServerConfigurations);
@@ -17,5 +16,6 @@ public class SupportedServerConfigurationsEditor : Editor
                 File.WriteAllText(path, json);
             }
         }
+	    base.OnInspectorGUI();
     }
 }
