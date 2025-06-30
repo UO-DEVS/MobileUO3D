@@ -65,8 +65,14 @@ public class StatusDebugAssistantPlugin : AssistantPlugin
 		ushort lastValue = character.mana;
 		ushort newValue = gameworld.Player.Mana;
 		int changeAmount = newValue - lastValue;
-		if (changeAmount != 0) Log("MANA <color=" + (changeAmount > 0 ? "cyan" : "purple") + ">" + changeAmount + "</color>"
-			+ "\n" + gameworld.Player.Mana + "/" + gameworld.Player.ManaMax + " (" + percentage + "%)");
+		if (changeAmount != 0)
+		{
+			string priorValue = "BEFORE " + character.mana + " (" + (character.manaFill * 100) + "%)";
+			Log("MANA <color=" + (changeAmount > 0 ? "cyan" : "purple") + ">" + changeAmount + "</color>"
+				+ "\n" + gameworld.Player.Mana + "/" + gameworld.Player.ManaMax + " (" + percentage + "%)"
+				+ "\n" + priorValue
+			);
+		}
 		else
 		{
 			string before = "\nBEFORE " + character.mana + " (" + (character.manaFill * 100) + "%)";
@@ -84,8 +90,15 @@ public class StatusDebugAssistantPlugin : AssistantPlugin
 		ushort lastValue = character.stamina;
 		ushort newValue = gameworld.Player.Stamina;
 		int changeAmount = newValue - lastValue;
-		if (changeAmount != 0) Log("STAMINA <color=" + (changeAmount > 0 ? "yellow" : "orange") + ">" + changeAmount + "</color>"
-			+ "\n" + gameworld.Player.Stamina + "/" + gameworld.Player.StaminaMax + " (" + percentage + "%)");
+		if (changeAmount != 0)
+		{
+			string priorValue = "BEFORE " + character.stamina + " (" + (character.staminaFill * 100) + "%)";
+			
+			Log("STAMINA <color=" + (changeAmount > 0 ? "yellow" : "orange") + ">" + changeAmount + "</color>"
+				+ "\n" + gameworld.Player.Stamina + "/" + gameworld.Player.StaminaMax + " (" + percentage + "%)"
+				+ "\n" + priorValue
+			);
+		}
 		else
 		{
 			string before = "\nBEFORE " + character.stamina + " (" + (character.staminaFill * 100) + "%)";
