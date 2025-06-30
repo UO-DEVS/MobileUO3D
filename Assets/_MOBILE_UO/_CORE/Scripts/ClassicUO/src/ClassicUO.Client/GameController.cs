@@ -29,7 +29,9 @@ using static SDL2.SDL;
 namespace ClassicUO
 {
     internal unsafe class GameController : Microsoft.Xna.Framework.Game
-    {
+	{
+		const string WINDOW_TITLE = "ClassicUO"; //ADDED DX4D
+		
         private SDL_EventFilter _filter;
 
 	    private bool _ignoreNextTextInput;
@@ -76,7 +78,18 @@ namespace ClassicUO
 
         public Scene Scene { get; private set; }
         public AudioManager Audio { get; private set; }
-        public UltimaOnline UO { get; } = new UltimaOnline();
+	    //ADDED DX4D
+	    private UltimaOnline _uo = null;
+	    public UltimaOnline UO
+	    {
+	    	get
+	    	{
+		    	if (_uo == null) _uo = new UltimaOnline();
+		    	return _uo;
+	    	}
+	    }
+	    //END ADDED
+	    //public UltimaOnline UO { get; } = new UltimaOnline(); //REMOVED DX4D
         public IPluginHost PluginHost { get; private set; }
         public GraphicsDeviceManager GraphicManager { get; }
         public readonly uint[] FrameDelay = new uint[2];
@@ -181,8 +194,30 @@ namespace ClassicUO
             //}
             base.UnloadContent();
         }
-
-        public void SetWindowTitle(string title)
+        
+		//ADDED DX4D
+		public void SetWindowTitle(string title)
+        {
+            if (string.IsNullOrEmpty(title))
+            {
+#if DEV_BUILD
+                Window.Title = $"{WINDOW_TITLE} [dev] - {CUOEnviroment.Version}";
+#else
+                Window.Title = $"{WINDOW_TITLE} - {CUOEnviroment.Version}";
+#endif
+            }
+            else
+            {
+#if DEV_BUILD
+                Window.Title = $"{title} - {WINDOW_TITLE} [dev] - {CUOEnviroment.Version}";
+#else
+	            Window.Title = $"{title} - {WINDOW_TITLE} - {CUOEnviroment.Version}";
+#endif
+            }
+        }
+		//END ADDED
+		//REMOVED DX4D
+		/*public void SetWindowTitle(string title)
         {
             if (string.IsNullOrEmpty(title))
             {
@@ -200,7 +235,8 @@ namespace ClassicUO
                 Window.Title = $"{title} - ClassicUO - {CUOEnviroment.Version}";
 #endif
             }
-        }
+        }*/
+		//END REMOVED
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public T GetScene<T>() where T : Scene

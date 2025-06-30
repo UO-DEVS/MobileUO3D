@@ -23,30 +23,41 @@ using ClassicUO.Network.Encryption;
 
 public class ClientRunner : MonoBehaviour
 {
-	[SerializeField]
-	public bool useGraphicsDrawTexture;
-	[SerializeField]
-	private bool forceEnterWorld;
-	[SerializeField]
-	private bool scaleGameToFitScreen;
-	[SerializeField]
-	private MobileJoystick movementJoystick;
-	[SerializeField]
-	private bool showMovementJoystickOnNonMobilePlatforms;
-	[SerializeField]
-	private float[] joystickDeadZoneValues;
-	[SerializeField]
-	private float[] joystickRunThresholdValues;
-	[SerializeField]
-	private GameObject modifierKeyButtonsParent;
-	[SerializeField]
-	private ModifierKeyButtonPresenter ctrlKeyButtonPresenter;
-	[SerializeField]
-	private ModifierKeyButtonPresenter altKeyButtonPresenter;
-	[SerializeField]
-	private ModifierKeyButtonPresenter shiftKeyButtonPresenter;
-	[SerializeField]
-	private UnityEngine.UI.Button escButton;
+	[Header("RENDER SETTINGS")]
+	[Tooltip("When this is enabled the UO client will not be rendered after patching and launching (used to override the default client)")]
+	[SerializeField] private bool disableClientRenderer = false;
+	
+	[Header("AUTOLOGIN")]
+	[SerializeField] private bool autologin;
+	[Space]
+	[SerializeField] string autologinServer = "fakeserver";
+	[SerializeField] string autologinAccount = "fakeaccount";
+	[SerializeField] string autologinCharacter = "fakecharacter";
+	[Space]
+	[SerializeField] int autologinMap = 0;
+	[SerializeField] ushort autologinX = 1443;
+	[SerializeField] ushort autologinY = 1677;
+	[SerializeField] sbyte autologinZ = 0;
+	
+	[Header("ENCRYPTION")]
+	[SerializeField] private EncryptionType encryption = EncryptionType.NONE;
+	
+	[Header("GRAPHICS")]
+	[SerializeField] public bool useGraphicsDrawTexture;
+	[SerializeField] private bool scaleGameToFitScreen;
+	
+	[Header("MOBILE JOYSTICK")]
+	[SerializeField] private MobileJoystick movementJoystick;
+	[SerializeField] private bool showMovementJoystickOnNonMobilePlatforms;
+	[SerializeField] private float[] joystickDeadZoneValues;
+	[SerializeField] private float[] joystickRunThresholdValues;
+	
+	[Header("VIRTUAL KEYBOARD")]
+	[SerializeField] private GameObject modifierKeyButtonsParent;
+	[SerializeField] private ModifierKeyButtonPresenter ctrlKeyButtonPresenter;
+	[SerializeField] private ModifierKeyButtonPresenter altKeyButtonPresenter;
+	[SerializeField] private ModifierKeyButtonPresenter shiftKeyButtonPresenter;
+	[SerializeField] private UnityEngine.UI.Button escButton;
 	
 	//ADDED DX4D
 	[Header("F KEYS")]
@@ -386,8 +397,7 @@ public class ClientRunner : MonoBehaviour
 
 	private void Update()
 	{
-		if (Client.Game == null)
-			return;
+		if (Client.Game == null) return;
 
 		if (lastScreenWidth != Screen.width || lastScreenHeight != Screen.height)
 		{
@@ -397,25 +407,31 @@ public class ClientRunner : MonoBehaviour
 			ApplyScalingFactor();
 		}
 
-		if (forceEnterWorld && Client.Game.Scene is LoginScene)
+		if (autologin && Client.Game.Scene is LoginScene)
 		{
-			ProfileManager.Load("fakeserver", "fakeaccount", "fakecharacter");
+			ProfileManager.Load(autologinServer, autologinAccount, autologinCharacter);
 			Client.Game.UO.World.Mobiles.Add(Client.Game.UO.World.Player = new PlayerMobile(Client.Game.UO.World, 0));
-			Client.Game.UO.World.MapIndex = 0;
-			Client.Game.UO.World.Player.X = 1443;
-			Client.Game.UO.World.Player.Y = 1677;
-			Client.Game.UO.World.Player.Z = 0;
+			Client.Game.UO.World.MapIndex = autologinMap;
+			Client.Game.UO.World.Player.X = autologinX;
+			Client.Game.UO.World.Player.Y = autologinY;
+			Client.Game.UO.World.Player.Z = autologinZ;
 			Client.Game.UO.World.Player.UpdateScreenPosition();
 			Client.Game.UO.World.Player.AddToTile();
 			Client.Game.SetScene(new GameScene(Client.Game.UO.World));
 		}
 
 		float deltaTime = UnityEngine.Time.deltaTime;
+		
+		//TODO: Evaluate if this is needed to keep timings in sync
+		//NOTE: Removed this for testing...all it seems to do is pretend "everything is fine" when the machine is lagging
+		//REMOVED DX4D
+		/*
 		//Is this necessary? Wouldn't it slow down the game even further when it dips below 20 FPS?
-        if(deltaTime > 0.050f)
+		if(deltaTime > 0.050f)
         {
             deltaTime = 0.050f;
-        }
+		}*/
+		//END REMOVED
 
         if (movementJoystick.isActiveAndEnabled && Client.Game.Scene is GameScene gameScene)
         {
@@ -471,16 +487,22 @@ public class ClientRunner : MonoBehaviour
 
 	private void OnPostRender()
     {
-	    if (Client.Game == null)
-		    return;
-
+	    if (Client.Game == null) return;
+	    
 	    GL.LoadPixelMatrix( 0, Screen.width, Screen.height, 0 );
 	    
+	    //REMOVED DX4D
         // MobileUO: turning off graphics draw texture flag - this fixes some rendering issues where tiles are flipped
-		Client.Game.Batcher.UseGraphicsDrawTexture = false;//useGraphicsDrawTexture;
-        Client.Game.DrawUnity(UnityEngine.Time.deltaTime);
-
-        forceEnterWorld = false;
+	    //Client.Game.Batcher.UseGraphicsDrawTexture = false;//useGraphicsDrawTexture;
+	    //END REMOVED
+	    //ADDED DX4D
+	    if (Application.platform == RuntimePlatform.Android) Client.Game.Batcher.UseGraphicsDrawTexture = false;
+	    else Client.Game.Batcher.UseGraphicsDrawTexture = useGraphicsDrawTexture;
+	    //END ADDED
+	    
+	    if (!disableClientRenderer) Client.Game.DrawUnity(UnityEngine.Time.deltaTime);
+        
+	    autologin = false;
     }
 
     public void StartGame(ServerConfiguration config)
@@ -502,9 +524,15 @@ public class ClientRunner : MonoBehaviour
 	    Settings.GlobalSettings.Port = ushort.Parse(config.UoServerPort);
 	    
 	    //Reset static encryption type variable
-		// MobileUO: TODO: does this need to be re-added?
-	    //NetClient.Socket.Encryption.Type = EncryptionType.NONE;
-	    Settings.GlobalSettings.Encryption = (byte) (config.UseEncryption ? 1 : 0);
+	    if (config.UseEncryption)
+	    {
+	    	Settings.GlobalSettings.Encryption = 1;
+	    	NetClient.Socket.Encryption.Type = encryption;
+	    }
+	    else
+	    {
+	    	Settings.GlobalSettings.Encryption = 0;
+	    }
 
 
 	    //TODO: Strip out broken plugin system logic

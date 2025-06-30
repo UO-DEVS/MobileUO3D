@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: BSD-2-Clause
+﻿// SPDX-License-Identifier: BSD-2-Clause
 
 using System.Collections.Generic;
 using ClassicUO.Configuration;
@@ -455,9 +455,15 @@ namespace ClassicUO.Game.UI.Controls
 
             if (Client.Game.UO.Gumps.GetGump((ushort)(animID + offset)).Texture == null)
             {
-                Log.Error(
+            	//ADDED DX4D
+            	UnityEngine.Debug.LogWarning("<color=red>ISSUE</color>: " + $"Texture not found in paperdoll: gump_graphic: {(ushort)(animID + offset)}");
+            	//END ADDED
+            	
+            	//REMOVED DX4D
+	            /*Log.Error(
                     $"Texture not found in paperdoll: gump_graphic: {(ushort)(animID + offset)}"
-                );
+	            );*/
+	            //END REMOVED
 
                 return false;
             }

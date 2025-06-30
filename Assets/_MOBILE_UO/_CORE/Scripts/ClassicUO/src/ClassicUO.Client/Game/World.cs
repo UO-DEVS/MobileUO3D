@@ -101,9 +101,31 @@ namespace ClassicUO.Game
 
         public InfoBarManager InfoBars { get; }
 
-        public Dictionary<uint, Item> Items { get; } = new Dictionary<uint, Item>();
+	    //ADDED DX4D
+	    private Dictionary<uint, Item> _items = new Dictionary<uint, Item>();
+	    public Dictionary<uint, Item> Items
+	    {
+	    	get
+	    	{
+		    	//if (_items == null) _items = new Dictionary<uint, Item>();
+		    	return _items;
+	    	}
+	    }
+	    //END ADDED
+	    //public Dictionary<uint, Item> Items { get; } = new Dictionary<uint, Item>(); //REMOVED DX4D
 
-        public Dictionary<uint, Mobile> Mobiles { get; } = new Dictionary<uint, Mobile>();
+	    //ADDED DX4D
+	    private Dictionary<uint, Mobile> _mobiles = new Dictionary<uint, Mobile>();
+	    public Dictionary<uint, Mobile> Mobiles
+	    {
+	    	get
+	    	{
+		    	//if (_mobiles == null) _mobiles = new Dictionary<uint, Mobile>();
+		    	return _mobiles;
+	    	}
+	    }
+	    //END ADDED
+	    //public Dictionary<uint, Mobile> Mobiles { get; } = new Dictionary<uint, Mobile>(); //REMOVED DX4D
 
         public Map.Map Map { get; private set; }
 

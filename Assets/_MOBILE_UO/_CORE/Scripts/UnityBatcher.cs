@@ -235,10 +235,30 @@ namespace ClassicUO.Renderer
             {
                 var rect = new Rect(x * scale, y * scale, w * scale, h * scale);
                 hueMaterial.SetColor(Hue, new Color(hue.X,hue.Y,hue.Z));
-                hueMaterial.SetFloat(UvMirrorX, mirror ? 1 : 0);
-                Graphics.DrawTexture(rect,
-                    texture.UnityTexture,new Rect(0,0,1,1),
-                    0, 0,0,0, hueMaterial);
+	            hueMaterial.SetFloat(UvMirrorX, mirror ? 1 : 0);
+	            
+	            //ADDED DX4D
+	            using (Texture2D tex = texture)
+	            {
+	            	if (mirror)
+	            	{
+	            		using (GraphicsTexture texFlip = null)
+	            		{
+	            			Graphics.Blit(tex.UnityTexture, texFlip, new Vector2(-1, 1), new Vector2(0, 0));
+		            		Graphics.CopyTexture(texFlip, tex.UnityTexture.graphicsTexture);
+	            		}
+	            	}
+	            	
+	            	Graphics.DrawTexture(rect,
+		            	tex.UnityTexture, new Rect(0,0,1,1),
+		            	0, 0, 0, 0, hueMaterial);
+	            }
+	            //END ADDED
+	            
+	            /*Graphics.DrawTexture(rect,
+		            texture.UnityTexture.graphicsTexture, new Rect(0,0,1,1),
+	            0, 0, 0, 0, hueMaterial);*/ //REMOVED DX4D
+		            
             }
             else
             {

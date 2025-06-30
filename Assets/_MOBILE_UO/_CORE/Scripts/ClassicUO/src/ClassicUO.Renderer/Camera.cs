@@ -45,6 +45,16 @@ namespace ClassicUO.Renderer
             }
         }
 
+	    //ADDED DX4D
+	    public void SetZoom(float minZoomValue = 1f, float maxZoomValue = 1f, float zoomStep = 0.1f)
+	    {
+            ZoomMin = minZoomValue;
+            ZoomMax = maxZoomValue;
+            ZoomStep = zoomStep;
+            Zoom = _lerpZoom = 1f;
+	    }
+	    //END ADDED
+	    
         public float ZoomStep { get; private set; }
         public float ZoomMin { get; private set; }
         public float ZoomMax { get; private set; }
