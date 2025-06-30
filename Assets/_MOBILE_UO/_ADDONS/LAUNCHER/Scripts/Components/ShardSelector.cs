@@ -54,6 +54,14 @@ public class ShardSelector : MonoBehaviour
 		//_shardSelectorUI.OnServerSelected(shard);
 	}
 	
+	//DELETE DOWNLOADED FILES
+	public void DeleteDownloadedFiles(ServerConfiguration serverConfig)
+	{
+		if (!_launcher) return;
+		
+		_launcher.DeleteDownloadedFiles(serverConfig);
+	}
+	
 	//ON SERVER LAUNCH
 	private void OnServerLaunch()
 	{

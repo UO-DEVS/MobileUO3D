@@ -83,4 +83,10 @@ public class ShardEntryUI : MonoBehaviour
 	{
 		Selector.LaunchShard(Shard, true);
 	}
+	
+	//UPDATE SHARD
+	public void ResetShard()
+	{
+		Selector.DeleteDownloadedFiles(Shard.GetConfig());
+	}
 }

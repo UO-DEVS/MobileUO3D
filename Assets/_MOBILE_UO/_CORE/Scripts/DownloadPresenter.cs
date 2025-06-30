@@ -76,7 +76,13 @@ public class DownloadPresenter : MonoBehaviour
     }
 
     public void SetFileDownloaded(string file)
-    {
+	{
+		if (fileNameToFileNameView == null || !fileNameToFileNameView.ContainsKey(file))
+		{
+			Debug.Log("POTENTIAL ISSUE: " + file + " was not registered to " + gameObject.name);
+			return;
+		}
+		
         var fileNameView = fileNameToFileNameView[file];
         if (fileNameView != null)
         {

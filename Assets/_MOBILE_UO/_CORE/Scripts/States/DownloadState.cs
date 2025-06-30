@@ -59,12 +59,21 @@ public class DownloadState : IState
 	    if (configurationDirectory.Exists)
 	    {
 		    FileInfo[] files = configurationDirectory.GetFiles();
-		    if (files == null || files.Length <= 0) updateRequired = true;
+		    if (files == null || files.Length <= 0)
+		    {
+		    	Log("UPDATE REQUIRED: No files found in directory " + configurationDirectory.ToString());
+		    	updateRequired = true;
+		    }
 	    }
-	    else updateRequired = true;
+	    else
+	    {
+	    	Log("UPDATE REQUIRED: Directory not found " + configurationDirectory.ToString());
+	    	updateRequired = true;
+	    }
 	    //END ADDED
-        
-	    if (!updateRequired || serverConfiguration.AllFilesDownloaded || (Application.isEditor && string.IsNullOrEmpty(serverConfiguration.ClientPathForUnityEditor) == false))
+	    
+	    // || serverConfiguration.AllFilesDownloaded //REMOVED DX4D
+	    if (!updateRequired || (Application.isEditor && string.IsNullOrEmpty(serverConfiguration.ClientPathForUnityEditor) == false))
         {
             StateManager.GoToState<GameState>();
         }

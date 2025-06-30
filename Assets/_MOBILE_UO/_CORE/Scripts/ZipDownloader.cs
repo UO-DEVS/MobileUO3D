@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -8,6 +8,7 @@ using UnityEngine.Networking;
 
 public class ZipDownloader : DownloaderBase
 {
+	private bool deleteAfterDownload = false;
     private string pathToSaveFiles;
     private int port;
     private string url;
@@ -61,7 +62,7 @@ public class ZipDownloader : DownloaderBase
         finally
         {
             downloadCoroutine = null;
-            File.Delete(filePath);
+	        if (deleteAfterDownload) File.Delete(filePath);
         }
 
         serverConfiguration.AllFilesDownloaded = true;
@@ -72,6 +73,10 @@ public class ZipDownloader : DownloaderBase
     
     private void DownloadFile()
     {
+	    var filePath = Path.Combine(pathToSaveFiles, fileName);
+	    
+	    if (File.Exists(filePath)) return; // File.Delete(filePath); //ADDED DX4D
+	    
         var uri = DownloadState.GetUri(url, port);
         var uriString = uri.ToString();
         if (uriString.EndsWith("/"))
@@ -86,7 +91,6 @@ public class ZipDownloader : DownloaderBase
         }
         
         webRequest = UnityWebRequest.Get(uriString);
-        var filePath = Path.Combine(pathToSaveFiles, fileName);
         var fileDownloadHandler = new DownloadHandlerFile(filePath) {removeFileOnAbort = true};
         webRequest.downloadHandler = fileDownloadHandler;
         webRequest.SendWebRequest().completed += _ => DownloadFinished(webRequest, fileName);

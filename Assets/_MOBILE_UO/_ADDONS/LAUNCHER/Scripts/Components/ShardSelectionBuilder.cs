@@ -175,16 +175,18 @@ public class ShardSelectionBuilder : MonoBehaviour
 	}
     
 	//LOG
-	private void Log(string message)
+	private void Log(string message, bool warning = false)
 	{
-		Debug.Log(message);
+		if (warning) Debug.LogWarning(message);
+		else Debug.Log(message);
 	}
-	private void Log(string header, string message, string color)
+	private void Log(string header, string message, string color, bool warning = false)
 	{
-		Debug.Log("<color=" + color + ">" + header + "</color>: " + message);
+		if (warning) Debug.LogWarning("<color=" + color + ">" + header + "</color>: " + message);
+		else Debug.Log("<color=" + color + ">" + header + "</color>: " + message);
 	}
 	private void LogIssue(string message)
 	{
-		Log("ISSUE", message, "red");
+		Log("ISSUE", message, "red", true);
 	}
 }

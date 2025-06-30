@@ -152,6 +152,11 @@ public class ShardLauncher : MonoBehaviour
 		}
 	}
     
+	//DELETE DOWNLOADED FILES
+	public void DeleteDownloadedFiles(ServerConfiguration serverConfig)
+	{
+		DeleteShardFiles(serverConfig);
+	}
 	//DELETE SHARD FILES
     private void DeleteShardFiles(ServerConfiguration serverConfig)
     {

@@ -21,6 +21,6 @@ MonoBehaviour:
   _unityEditorClientPath: 
   _encryption: 0
   _preferExternalStorage: 0
-  _isSupportedServer: 1
+  _isSupportedServer: 0
   _clientFilesDownloaded: 0
   _shardBanner: {fileID: 21300000, guid: 4908056fabade914ab83f72481ff3be7, type: 3}
