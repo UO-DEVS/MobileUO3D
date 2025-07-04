@@ -24,7 +24,7 @@ namespace UI.Tools
 		{
 			foreach (Transform target in _targets)
 			{
-				ToggleOff(target);
+				if (target) ToggleOff(target);
 			}
 		}
 		//ON ENABLE

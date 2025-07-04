@@ -1,4 +1,4 @@
-using ClassicUO.Utility;
+﻿using ClassicUO.Utility;
 using System.Collections.Generic;
 using System.IO;
 using static ClassicUO.Assets.AnimationsLoader;
@@ -47,6 +47,9 @@ namespace ClassicUO.Game.Data
                     sbyte.TryParse(ss[5], out sbyte offsetY);
                     sbyte.TryParse(ss[6], out sbyte mirrorOffsetY);
 
+	                //ADDED DX4D
+	                if (Table.ContainsKey(graphic)) Table.Remove(graphic);
+	                //END ADDED
                     Table.Add(graphic, new SittingInfoData(graphic, d1, d2, d3, d4, offsetY, mirrorOffsetY, false));
                 }
             }
