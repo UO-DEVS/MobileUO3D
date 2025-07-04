@@ -15,7 +15,7 @@ MonoBehaviour:
   _shardName: UO Alive
   _shardURL: login.uoalive.com
   _shardPort: 2593
-  _fileDownloadURL: mobile.uoalive.com/uoalive_v2.zip
+  _fileDownloadURL: mobile.uoalive.com/uoalive_v3.zip
   _fileDownloadPort: 80
   _targetClientVersion: 7.0.109.0
   _unityEditorClientPath: 
