@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Networking;
 using System.IO;
+using System.IO.Compression;
 
 public class DownloadState : IState
 {
@@ -111,12 +112,12 @@ public class DownloadState : IState
                     if (request.result == UnityWebRequest.Result.ProtocolError)
                     {
                         StopAndShowError($"Error while making http request to server: {request.error}");
-                        return;
+	                    return;
                     }
                     else if (request.result == UnityWebRequest.Result.ConnectionError)
                     {
                         StopAndShowError($"Could not connect to server: {request.error}");
-                        return;
+	                    return;
                     }
                     //END ADDED
 
@@ -141,6 +142,18 @@ public class DownloadState : IState
 
                     if (FilesToDownload != null)
                     {
+	                    //ADDED DX4D
+	                    string pathToSaveFiles = serverConfiguration.GetPathToSaveFiles();
+	                    foreach (var file in FilesToDownload)
+	                    {
+		                    if (file.ToLowerInvariant().Contains(".zip"))
+		                    {
+			                    UnZip(Path.Combine(pathToSaveFiles, file), pathToSaveFiles);	
+		                    }
+		                    //string filePath = Path.Combine(pathToSaveFiles, file);
+	                    }
+	                    //END ADDED
+                    	
                         FilesToDownload.RemoveAll(file => NeededUoFileExtensions.Any(file.Contains) == false);
                         SetFileListAndDownload(FilesToDownload);
                     }
@@ -177,6 +190,29 @@ public class DownloadState : IState
             StartDirectoryDownloader();
         }
     }
+    
+	//ADDED DX4D
+	private void UnZip(string source, string destination, bool deleteZipFile = false)
+	{
+		try
+		{
+			ZipFile.ExtractToDirectory(source, destination, true);
+			if (deleteZipFile) File.Delete(source);
+		}
+		catch (Exception e)
+		{
+			var error = $"Error while extracting {source}: {e}";
+			Debug.Log(error);
+			//downloadState.StopAndShowError(error);
+			//yield break;
+		}
+		finally
+		{
+			//downloadCoroutine = null;
+			//if (deleteAfterDownload) 
+		}
+	}
+	//END ADDED
 
     private void StartDirectoryDownloader()
     {

@@ -40,15 +40,30 @@ public class ZipDownloader : DownloaderBase
         
         downloadPresenter.UpdateView(0,1);
         
-        DownloadFile();
-
+	    var filePath = Path.Combine(pathToSaveFiles, fileName);
+	    if (File.Exists(filePath))
+	    {
+	    	Debug.Log("File already downloaded");
+		    downloadCoroutine = null;
+		    downloadPresenter.SetFileDownloaded(fileName);
+		    downloadPresenter.UpdateView(1, 1);
+		    
+		    serverConfiguration.AllFilesDownloaded = true;
+		    ServerConfigurationModel.SaveServerConfigurations();
+		    
+	    	StateManager.GoToState<GameState>();
+	    	yield break;
+	    }
+	    
+	    DownloadFile();
+	    
         while (webRequest.isDone == false)
         {
-            downloadPresenter.SetDownloadProgress(fileName, webRequest.downloadProgress);
-            yield return null;
+	        downloadPresenter.SetDownloadProgress(fileName, webRequest.downloadProgress);
+	        yield return new WaitForSeconds(1);
+	        //yield return null;
         }
         
-        var filePath = Path.Combine(pathToSaveFiles, fileName);
         try
         {
             ZipFile.ExtractToDirectory(filePath, pathToSaveFiles, true);
@@ -61,7 +76,7 @@ public class ZipDownloader : DownloaderBase
         }
         finally
         {
-            downloadCoroutine = null;
+	        downloadCoroutine = null;
 	        if (deleteAfterDownload) File.Delete(filePath);
         }
 
@@ -73,9 +88,9 @@ public class ZipDownloader : DownloaderBase
     
     private void DownloadFile()
     {
-	    var filePath = Path.Combine(pathToSaveFiles, fileName);
 	    
-	    if (File.Exists(filePath)) return; // File.Delete(filePath); //ADDED DX4D
+	    //if (File.Exists(filePath)) return; // 
+	    //File.Delete(filePath); //ADDED DX4D
 	    
         var uri = DownloadState.GetUri(url, port);
         var uriString = uri.ToString();
@@ -91,9 +106,10 @@ public class ZipDownloader : DownloaderBase
         }
         
         webRequest = UnityWebRequest.Get(uriString);
+	    var filePath = Path.Combine(pathToSaveFiles, fileName);
         var fileDownloadHandler = new DownloadHandlerFile(filePath) {removeFileOnAbort = true};
-        webRequest.downloadHandler = fileDownloadHandler;
-        webRequest.SendWebRequest().completed += _ => DownloadFinished(webRequest, fileName);
+	    webRequest.downloadHandler = fileDownloadHandler;
+	    webRequest.SendWebRequest().completed += _ => DownloadFinished(webRequest, fileName);
     }
 
     private static string GetFileNameFromUrl(string url)
@@ -113,7 +129,8 @@ public class ZipDownloader : DownloaderBase
         //If download coroutine was stopped, do nothing
         if (downloadCoroutine == null)
         {
-            return;
+        	Debug.Log("Download Complete!!");
+	        return;
         }
 
         if (request.result == UnityWebRequest.Result.Success)
