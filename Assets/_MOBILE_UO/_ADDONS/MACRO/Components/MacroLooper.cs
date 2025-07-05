@@ -17,6 +17,18 @@ public class MacroLooper : MonoBehaviour
 	const int MAX = 1000000;
 	
 	[Header("COMPONENT LINKS")]
+	//TARGET SELF INDICATOR
+	[SerializeField] Transform _targetSelfIndicator;
+	public void UpdateTargetSelfIndicator()
+	{
+		if (_targetSelfIndicator) _targetSelfIndicator.gameObject.SetActive(_targetSelf);
+	}
+	//TARGET LAST INDICATOR
+	[SerializeField] Transform _targetLastIndicator;
+	public void UpdateTargetLastIndicator()
+	{
+		if (_targetLastIndicator) _targetLastIndicator.gameObject.SetActive(_targetLast);
+	}
 	//LOOP INDICATOR
 	[SerializeField] Transform _loopIndicator;
 	public void UpdateLoopIndicator()
@@ -29,8 +41,13 @@ public class MacroLooper : MonoBehaviour
 	public void UpdateMacroLabel()
 	{
 		string macroLabelText = string.Empty;
-		if ((int)_skill != (int)UOActiveSkill.NoSkill) macroLabelText += "[" + _skill.ToString() + "]";
-		if ((int)_spell != (int)UOSpell.NoSpell) macroLabelText += "[" + _spell.ToString() + "]";
+		
+		bool hasSkill = (int)_skill != (int)UOActiveSkill.NoSkill;
+		bool hasSpell = (int)_spell != (int)UOSpell.NoSpell;
+		if (hasSkill) macroLabelText += _skill.ToString();
+		if (hasSkill && hasSpell) macroLabelText += " ";
+		if (hasSpell) macroLabelText += _spell.ToString();
+		
 		if (_macroLabel) _macroLabel.SetText(macroLabelText);
 	}
 	
@@ -96,6 +113,20 @@ public class MacroLooper : MonoBehaviour
 		_loop = looping;
 		UpdateLoopIndicator();
 	}
+	//TARGET SELF
+	[SerializeField] bool _targetSelf = false;
+	public void SetTargetSelf(bool targetingSelf)
+	{
+		_targetSelf = targetingSelf;
+		UpdateTargetSelfIndicator();
+	}
+	//TARGET LAST
+	[SerializeField] bool _targetLast = false;
+	public void SetTargetLast(bool targetingLast)
+	{
+		_targetLast = targetingLast;
+		UpdateTargetLastIndicator();
+	}
 	//KEYPRESS
 	[SerializeField] KeyCode _key = KeyCode.None;
 	//SKILL
@@ -144,6 +175,8 @@ public class MacroLooper : MonoBehaviour
 		if (!_macroLabel) Debug.LogWarning("You must assign the macro label to " + name);
 		if (!_delayLabel) Debug.LogWarning("You must assign the delay label to " + name);
 		if (!_loopIndicator) Debug.LogWarning("You must assign the loop indicator to " + name);
+		if (!_targetSelfIndicator) Debug.LogWarning("You must assign the target self indicator to " + name);
+		if (!_targetLastIndicator) Debug.LogWarning("You must assign the target last indicator to " + name);
 		if (!_delayBox) _delayBox = GetComponentInChildren<TMPro.TMP_InputField>();
 		if (!_skillDropdown) Debug.LogWarning("You must assign the skill dropdown to " + name);
 		if (!_spellDropdown) Debug.LogWarning("You must assign the spell dropdown to " + name);
@@ -157,6 +190,8 @@ public class MacroLooper : MonoBehaviour
 		UpdateDelayLabel();
 		UpdateMacroLabel();
 		UpdateLoopIndicator();
+		UpdateTargetSelfIndicator();
+		UpdateTargetLastIndicator();
 	}
 
 	//SKILLS
@@ -255,7 +290,55 @@ public class MacroLooper : MonoBehaviour
 			if (_spell != UOSpell.NoSpell) CastSpell(_spell);
 			//PressKey(_key, ClassicUO.Client.Game);
 			//ReleaseKey(_key, ClassicUO.Client.Game);
-			
+			if (_targetSelf || _targetLast)// && Assistant.UOSObjects.Player != null)
+			{
+				float delay = 0.25f;
+				float elapsed = 0f;
+				float duration = _interval;
+				if (duration < 1f) duration = 1f;
+				while (ClassicUO.Client.Game.UO.World.TargetManager.IsTargeting == false)
+				{
+					if (elapsed >= duration) break;
+					//if (elapsed >= duration) continue;
+					Debug.Log("Waiting for target...");
+					yield return new WaitForSeconds(delay);
+					elapsed += delay;
+				}
+				Debug.Log("TARGETING");
+				//Assistant.UOSObjects.Player.SendMessage(Assistant.MsgLevel.Warning, "Targeting self...");
+				//Assistant.Targeting.ClearQueue();
+				//Assistant.Targeting.DoTargetSelf(true);
+				
+				if (_targetSelf) ClassicUO.Client.Game.UO.World.TargetManager.Target(ClassicUO.Client.Game.UO.World.Player);
+				else if (_targetLast) ClassicUO.Client.Game.UO.World.TargetManager.TargetLast();
+				//Assistant.Targeting.SetLastTargetTo(Assistant.UOSObjects.Player);
+				//Assistant.Targeting.LastTarget(true);
+				//Assistant.Targeting.TargetSelf(true);
+			}
+				/*
+				if (UOSObjects.Player == null)
+					return true;
+
+				UOItem pack = UOSObjects.Player.Backpack;
+				if (pack != null)
+				{
+					UOItem obj = pack.FindItemByID(3617);
+					if (obj == null)
+					{
+						UOSObjects.Player.SendMessage(MsgLevel.Warning, "No bandages found");
+					}
+					else
+					{
+						Engine.Instance.SendToServer(new DoubleClick(obj.Serial));
+						if (force)
+						{
+							Assistant.Targeting.ClearQueue();
+							Assistant.Targeting.DoTargetSelf(true);
+						}
+						else
+							Assistant.Targeting.TargetSelf(true);
+				}*/
+					
 			if (!_loop) running = false;
 		}
 	}
