@@ -11,95 +11,63 @@ using ClassicUO.Game.Scenes;
 using ClassicUO.Game.Managers;
 //using ClassicUO.Game.Data;
 
-public enum UOSkill
-{
-	none = -1,
-	alchemy = 0,
-	anatomy = 1,
-	animallore = 2,// { "animal lore", 2 },
-	itemid = 3,// {"itemidentification", 3 }, { "item identification", 3 }, { "item id", 3 },
-	armslore = 4,// { "arms lore", 4 },
-	parry = 5,// { "parrying", 5 },
-	begging = 6,
-	blacksmithing = 7,// { "blacksmith", 7 },
-	fletching = 8,// { "bowcraft", 8 },
-	peacemaking = 9,// { "peace", 9 }, { "peacemake", 9 },
-	camping = 10,// { "camp", 10 },
-	carpentry = 11,
-	cartography = 12,
-	cooking = 13,// { "cook", 13 },
-	detecthidden = 14,// { "detect", 14 }, { "detectinghidden", 14 }, { "detecting hidden", 14 }, { "detect hidden", 14 },
-	discordance = 15,// { "discord", 15 }, { "enticement", 15 }, { "entice", 15 },
-	evalint = 16,// { "evaluatingintelligence", 16 }, { "eval", 16 }, { "evaluating intelligence", 16 },
-	healing = 17,
-	fishing = 18,
-	forensicevaluation = 19,// { "forensiceval", 19 }, { "forensics", 19 },
-	herding = 20,
-	hiding = 21,
-	provocation = 22,// { "provo", 22 },
-	inscription = 23,// { "scribe", 23 },
-	lockpicking = 24,
-	magery = 25,// { "mage", 25 },
-	resistingspells = 26,// { "resist", 26 }, { "magicresist", 26 },
-	tactics = 27,
-	snooping = 28,// { "snoop", 28 },
-	musicianship = 29,// { "music", 29 },
-	poisoning = 30,
-	archery = 31,
-	spiritspeak = 32,
-	stealing = 33,
-	tailoring = 34,
-	animaltaming = 35,// { "taming", 35 }, { "animal taming", 35 },
-	tasteid = 36,// { "tasteidentification", 36 },
-	tinkering = 37,
-	tracking = 38,
-	veterinary = 39,// { "vet", 39 },
-	swordsmanship = 40,// { "swords", 40 },
-	macefighting = 41,// { "macing", 41 }, { "mace fighting", 41 },
-	fencing = 42,
-	wrestling = 43,
-	lumberjacking = 44,
-	mining = 45,
-	meditation = 46,
-	stealth = 47,
-	removetrap = 48,
-	necromancy = 49,// { "necro", 49 },
-	focus = 50,
-	chivalry = 51,
-	bushido = 52,
-	ninjitsu = 53,
-	herbology = 54// herboristery = 54
-}
 public class MacroLooper : MonoBehaviour
 {
 	const int MIN = 100;
 	const int MAX = 1000000;
 	
 	[Header("COMPONENT LINKS")]
-	//SKILL LABEL
-	[SerializeField] TMPro.TMP_Text _skillLabel;
-	public void UpdateSkillLabel()
-	{
-		if (_skillLabel) _skillLabel.SetText(_skill.ToString());
-	}
-	//DELAY LABEL
-	[SerializeField] TMPro.TMP_Text _delayLabel;
-	public void UpdateDelayLabel()
-	{
-		if (_delayLabel) _delayLabel.SetText(_delay.ToString());
-	}
 	//LOOP INDICATOR
 	[SerializeField] Transform _loopIndicator;
 	public void UpdateLoopIndicator()
 	{
 		if (_loopIndicator) _loopIndicator.gameObject.SetActive(_loop);
 	}
+	[Header("MACRO LABEL")]
+	//MACRO LABEL
+	[SerializeField] TMPro.TMP_Text _macroLabel;
+	public void UpdateMacroLabel()
+	{
+		string macroLabelText = string.Empty;
+		if ((int)_skill != (int)UOActiveSkill.NoSkill) macroLabelText += "[" + _skill.ToString() + "]";
+		if ((int)_spell != (int)UOSpell.NoSpell) macroLabelText += "[" + _spell.ToString() + "]";
+		if (_macroLabel) _macroLabel.SetText(macroLabelText);
+	}
 	
+	[Header("_skills_")]
+	//SKILL LABEL
+	//[SerializeField] TMPro.TMP_Text _skillLabel;
+	//public void UpdateSkillLabel()
+	//{
+	//	if (_skillLabel) _skillLabel.SetText(_skill.ToString());
+	//}
 	//SKILL CONFIG DROPDOWN
 	[SerializeField] TMPro.TMP_Dropdown _skillDropdown;
 	public void UpdateSkillDropdown()
 	{
 		if (_skillDropdown) _skillDropdown.value = (int)_skill;
+	}
+	
+	[Header("_spells_")]
+	//SPELL LABEL
+	//[SerializeField] TMPro.TMP_Text _spellLabel;
+	//public void UpdateSpellLabel()
+	//{
+	//	if (_spellLabel) _spellLabel.SetText(_spell.ToString());
+	//}
+	//SPELL CONFIG DROPDOWN
+	[SerializeField] TMPro.TMP_Dropdown _spellDropdown;
+	public void UpdateSpellDropdown()
+	{
+		if (_spellDropdown) _spellDropdown.value = (int)_spell;
+	}
+	
+	[Header("_delay_")]
+	//DELAY LABEL
+	[SerializeField] TMPro.TMP_Text _delayLabel;
+	public void UpdateDelayLabel()
+	{
+		if (_delayLabel) _delayLabel.SetText(_delay.ToString());
 	}
 	//DELAY CONFIG BOX
 	[SerializeField] TMPro.TMP_InputField _delayBox;
@@ -121,16 +89,35 @@ public class MacroLooper : MonoBehaviour
 	}
 	
 	[Header("SETTINGS")]
+	//LOOP
 	[SerializeField] bool _loop = false;
+	public void SetLoop(bool looping)
+	{
+		_loop = looping;
+		UpdateLoopIndicator();
+	}
+	//KEYPRESS
 	[SerializeField] KeyCode _key = KeyCode.None;
-	[SerializeField] UOSkill _skill = UOSkill.none;
+	//SKILL
+	[SerializeField] UOActiveSkill _skill = UOActiveSkill.NoSkill;
 	public void SetSkill(int id)
 	{
-		_skill = (UOSkill)id;
-		UpdateSkillLabel();
-		UpdateSkillDropdown();
+		
+		_skill = (UOActiveSkill)GetSkill(_skillDropdown.options[id].text);
+		//_skill = (UOSkill)id;
+		//UpdateSkillDropdown();
+		UpdateMacroLabel();
 	}
-	
+	//SPELL
+	[SerializeField] UOSpell _spell = UOSpell.NoSpell;
+	public void SetSpell(int id)
+	{
+		_spell = (UOSpell)GetSpell(_spellDropdown.options[id].text);
+		//_spell = (UOSpell)id;
+		//UpdateSpellDropdown();
+		UpdateMacroLabel();
+	}
+	//DELAY
 	[SerializeField, Range(MIN,MAX)] int _delay = 10000;
 	public void SetDelay(string delayToSetString)
 	{
@@ -146,11 +133,6 @@ public class MacroLooper : MonoBehaviour
 		UpdateDelayLabel();
 		//if(delayBox != null) delayBox.text = delayToSet.ToString();
 	}
-	public void SetLoop(bool looping)
-	{
-		_loop = looping;
-		UpdateLoopIndicator();
-	}
 	
 	public SDL_Keymod KeymodOverride;
 	
@@ -159,49 +141,82 @@ public class MacroLooper : MonoBehaviour
 	
 	protected void OnValidate()
 	{
-		if (!_skillLabel) Debug.LogWarning("You must assign the skill label to " + name);
+		if (!_macroLabel) Debug.LogWarning("You must assign the macro label to " + name);
 		if (!_delayLabel) Debug.LogWarning("You must assign the delay label to " + name);
 		if (!_loopIndicator) Debug.LogWarning("You must assign the loop indicator to " + name);
 		if (!_delayBox) _delayBox = GetComponentInChildren<TMPro.TMP_InputField>();
-		if (!_skillDropdown) _skillDropdown = GetComponentInChildren<TMPro.TMP_Dropdown>();
-		if (!_skillLabel) Debug.LogWarning("You must assign the settings panel to " + name);
+		if (!_skillDropdown) Debug.LogWarning("You must assign the skill dropdown to " + name);
+		if (!_spellDropdown) Debug.LogWarning("You must assign the spell dropdown to " + name);
+		if (!_settingsPanel) Debug.LogWarning("You must assign the settings panel to " + name);
 	}
 	protected void Awake()
 	{
-		UpdateSkillLabel();
-		UpdateDelayLabel();
-		UpdateLoopIndicator();
 		UpdateSkillDropdown();
+		UpdateSpellDropdown();
 		UpdateDelayTextBox();
+		UpdateDelayLabel();
+		UpdateMacroLabel();
+		UpdateLoopIndicator();
 	}
 
+	//SKILLS
 	// Convert steam-compatible skill names to Skills
 	internal static int GetSkill(string skillName)
 	{
-		UOSkill myskill = UOSkill.none;
+		UOSkill myskill = UOSkill.NoSkill;
 		if (Enum.TryParse<UOSkill>(skillName, true, out myskill))
 		{
 			return (int)myskill;
 		} else Debug.LogWarning("<color=red>ISSUE</color>: " + "Skill " + skillName + " was not found");
-		//new RunTimeError(null, $"Unknown skill name: {skillName}");
-		return -1; 
+
+		return (int)UOSkill.NoSkill; 
 	}
 	void UseSkill(string skillName)
 	{
 		UseSkill(GetSkill(skillName));
 	}
-	void UseSkill(UOSkill skillToUse)
+	void UseSkill(UOActiveSkill skillToUse)
 	{
-		UseSkill((int)skillToUse);
+		if (skillToUse != UOActiveSkill.NoSkill) UseSkill((int)skillToUse);
 	}
 	void UseSkill(int id)
 	{
 		if (ClassicUO.Client.Game == null || ClassicUO.Client.Game.UO == null) return;
 		
 		Debug.Log("USING SKILL #" + id + " " + ((UOSkill)id).ToString());
-		if (id > -1) ClassicUO.Game.GameActions.UseSkill(id);
+		if (id != (int)UOSkill.NoSkill) ClassicUO.Game.GameActions.UseSkill(id);
 		else Debug.LogWarning("<color=red>ISSUE</color>: " + "Skill " + id + " was not found");
 	}
+	
+	//SPELLS
+	internal static int GetSpell(string spellName)
+	{
+		UOSpell myspell = UOSpell.NoSpell;
+		if (Enum.TryParse<UOSpell>(spellName, true, out myspell))
+		{
+			return (int)myspell;
+		} else Debug.LogWarning("<color=red>ISSUE</color>: " + "Spell " + spellName + " was not found");
+
+		return (int)UOSpell.NoSpell; 
+	}
+	void CastSpell(string skillName)
+	{
+		CastSpell(GetSkill(skillName));
+	}
+	void CastSpell(UOSpell skillToUse)
+	{
+		CastSpell((int)skillToUse);
+	}
+	void CastSpell(int id)
+	{
+		if (ClassicUO.Client.Game == null || ClassicUO.Client.Game.UO == null) return;
+		
+		Debug.Log("USING SPELL #" + id + " " + ((UOSpell)id).ToString());
+		if (id != (int)UOSpell.NoSpell) ClassicUO.Game.GameActions.CastSpell(id);
+		else Debug.LogWarning("<color=red>ISSUE</color>: " + "Spell " + id + " was not found");
+	}
+	
+	
 	//PLAY
 	public void Play()
 	{
@@ -235,8 +250,9 @@ public class MacroLooper : MonoBehaviour
 			yield return new WaitForEndOfFrame();// WaitForSeconds(0.05f); //WAIT
 			iteration++;
 			Debug.Log("Delay: " + _interval + " Iteration: " + iteration + " TimeScale: " + Time.timeScale);
-			PressKey(_key, ClassicUO.Client.Game);
-			if (_skill != UOSkill.none) UseSkill(_skill);
+			if (_key != KeyCode.None) PressKey(_key, ClassicUO.Client.Game);
+			if (_skill != UOActiveSkill.NoSkill) UseSkill(_skill);
+			if (_spell != UOSpell.NoSpell) CastSpell(_spell);
 			//PressKey(_key, ClassicUO.Client.Game);
 			//ReleaseKey(_key, ClassicUO.Client.Game);
 			
